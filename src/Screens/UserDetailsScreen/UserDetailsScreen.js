@@ -32,7 +32,7 @@ const UserDetailsScreen = () => {
 
         setName(user.name || '');
         setPhoneNumber(user.phoneNumber || '');
-        setEmail(savedEmail || '');
+        setEmail(user.email || '');
       } catch {
         console.error('Error retrieving user data:', error);
       }

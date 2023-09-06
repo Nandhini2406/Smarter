@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import CustomInput from '../../Components/CustomTextInput/CustomInput';
@@ -90,6 +90,7 @@ const SignupScreen = () => {
         // Store the user data with the unique key
         await AsyncStorage.setItem(userKey, JSON.stringify(user));
         navigation.navigate('UserDetailsScreen');
+        await AsyncStorage.setItem('savedEmail', email);
         console.log('Email....', email);
         console.log(`User email : ${userKey}   User Data : ${user.password}`);
 
@@ -101,6 +102,7 @@ const SignupScreen = () => {
   };
   
   return (
+    <ScrollView>
     <View style={styles.root}>
       <Text style={styles.title}>Sign Up Here!</Text>
       <CustomInput
@@ -160,6 +162,7 @@ const SignupScreen = () => {
       <CustomButton text="Sign up" onPress={onSignupBtnPressed} />
       {error && <Text style={styles.errorMsg}>{error}</Text>}
     </View>
+    </ScrollView> 
   );
 };
 

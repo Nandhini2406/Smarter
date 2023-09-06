@@ -7,10 +7,10 @@ import CustomButton from '../../Components/CustomButton/CustomButton';
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [name, setName] = useState('');
-
+  console.log('HomeScreen')
   useEffect(() => {
     const getUserName = async () => {
-      try {
+      try { 
         const savedName = await AsyncStorage.getItem('userName');
         console.log(`Current UserName: ${savedName}`);
         if (savedName) {
@@ -22,7 +22,7 @@ const HomeScreen = () => {
       }
     };
     getUserName();
-  }, []);
+  }, [name]);
 
   const viewProfilePressed = () => {
     navigation.navigate('ProfileScreen');
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'purple',
-    fontSize: 22,
+    fontSize: 24,
     fontStyle: 'italic',
     margin: 15,
   },
