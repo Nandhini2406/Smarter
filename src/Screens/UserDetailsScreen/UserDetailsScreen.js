@@ -23,9 +23,12 @@ const UserDetailsScreen = () => {
       try {
         const savedEmail = await AsyncStorage.getItem('savedEmail');
         const userKey = `user_${savedEmail}`;
+        console.log(`UserKey ... ${userKey}`);
         const userData = await AsyncStorage.getItem(userKey);
         const user = JSON.parse(userData);
-        console.log(`User ${user.name}`);
+        console.log(`User_Name ${user.name}`);
+        console.log(`User_PhoneNumber ${user.phoneNumber}`);
+        console.log(`User_Email ${user.email}`);
 
         setName(user.name || '');
         setPhoneNumber(user.phoneNumber || '');
@@ -78,9 +81,10 @@ const UserDetailsScreen = () => {
       };
       await AsyncStorage.setItem(userKey, JSON.stringify(updatedUser));
       console.log('User details saved successfully');
+      Alert.alert('User details saved successfully');
+      await AsyncStorage.setItem('savedEmail', email);
+      await AsyncStorage.setItem('userName', updatedUser.name)
       navigation.navigate('HomeScreen');
-      //Alert('User details saved successfully');
-      
     } catch (error) {
       console.error('Error saving user data:', error);
     }

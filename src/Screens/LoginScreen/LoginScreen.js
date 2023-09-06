@@ -29,9 +29,11 @@ const LoginScreen = () => {
 
         if (user.password === password && user.email === email) {
           //const userEmail = email; 
-          await AsyncStorage.setItem('loggedInUserEmail', email);
+          await AsyncStorage.setItem('savedEmail', email);
+          console.log('savedEmail', email);
           let savedName = user.name
           await AsyncStorage.setItem('userName', savedName);
+          console.log(`savedName.... ${savedName}`);
           
           setLoginError(null);
           console.log('Authentication successful');

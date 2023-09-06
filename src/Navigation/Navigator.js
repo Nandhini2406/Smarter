@@ -22,7 +22,7 @@ const Navigator = () => {
       
       const checkAuthentication = async () => {
         try {
-          const userToken = await AsyncStorage.getItem('loggedInUserEmail');
+          const userToken = await AsyncStorage.getItem('savedEmail');
           console.log(`User email ${userToken}`)
           if (userToken) {
             // User is authenticated

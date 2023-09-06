@@ -2,6 +2,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import CustomButton from '../../Components/CustomButton/CustomButton';
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
@@ -16,10 +17,12 @@ const ProfileScreen = () => {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const loggedInUserEmail = await AsyncStorage.getItem('loggedInUserEmail'); //users used login
-        const savedEmail = await AsyncStorage.getItem('savedEmail'); // user used signup
+      
+        const savedEmail = await AsyncStorage.getItem('savedEmail'); // user 
         // Use the email to fetch the user's details
-        const userKey = `user_${loggedInUserEmail}`;
+        const userKey = `user_${savedEmail}`;
+        console.log(`Saved email... ${savedEmail}`);
+        console.log(`User Key... ${userKey}`);
         const userData = await AsyncStorage.getItem(userKey);
         const user = JSON.parse(userData);
 
@@ -27,12 +30,12 @@ const ProfileScreen = () => {
         if (user) {
           setName(user.name || '');
           setPhoneNumber(user.phoneNumber || '');
-          setEmail(loggedInUserEmail || ''); // Use the fetched email
+          setEmail(user.email || ''); // Use the fetched email
           setLocation(user.location || '');
           setAddress(user.address || '');
           setCompany(user.company || '');
         }
-      } catch {
+      } catch(error) {
         console.error('Error retrieving user data:', error);
       }
     };
@@ -65,6 +68,7 @@ const ProfileScreen = () => {
         <Text style={styles.text1}>Company: </Text>
         <Text style={styles.text2}>{company}</Text>
       </View>
+      {/*                <CustomButton ></CustomButton> */}
     </View>
   );
 };

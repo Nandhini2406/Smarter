@@ -90,8 +90,7 @@ const SignupScreen = () => {
         // Store the user data with the unique key
         await AsyncStorage.setItem(userKey, JSON.stringify(user));
         navigation.navigate('UserDetailsScreen');
-        await AsyncStorage.setItem('savedEmail', email);
-        console.log('savedEmail', email);
+        console.log('Email....', email);
         console.log(`User email : ${userKey}   User Data : ${user.password}`);
 
       }
