@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Alert} from 'react-native'
+import { View, Text, StyleSheet, Alert, Button} from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import CustomInput from '../../Components/CustomTextInput/CustomInput'
@@ -11,7 +11,7 @@ const LoginScreen = () => {
   const navigation = useNavigation();
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
-  const [ viewPassword, setViewPassword ] = useState(true);
+  const [ viewPassword, setViewPassword ] = useState(false);
   const [ loginError, setLoginError ] = useState(null);
   let name = '';
   
@@ -68,7 +68,6 @@ const LoginScreen = () => {
         setvalue={(text) => setPassword(text)} 
         value={password} 
         secureTextEntry={viewPassword}/>
-        {/* <Icon></Icon> */}
       </View>
       {loginError && <Text style={styles.errorMsg}>{loginError}</Text>}
       <CustomButton text="Login" onPress={loginBtnPressed}  />
