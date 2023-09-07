@@ -11,7 +11,7 @@ import {useNavigation} from '@react-navigation/native';
 import CustomInput from '../../Components/CustomTextInput/CustomInput';
 import CustomButton from '../../Components/CustomButton/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Icon } from 'react-native-vector-icons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 const LoginScreen = () => {
@@ -57,6 +57,9 @@ const LoginScreen = () => {
       console.error('Error in authentication:', error);
     }
   };
+  const toggleShowPassword = () => {
+    setViewPassword(!viewPassword);
+  };
 
   const forgotPasswordBtnPressed = () => {
     navigation.navigate('SetPassword');
@@ -78,10 +81,11 @@ const LoginScreen = () => {
         <TextInput
           style={styles.input}
           placeholder="Password"
+          secureTextEntry={!viewPassword}
           onChangeText={text => setPassword(text)}
           value={password}/>
-          <TouchableOpacity style={{ position: 'absolute', right: 12}}>
-            {/* <Icon name='eye-off' size={22} color='black'></Icon> */}
+          <TouchableOpacity style={{ position: 'absolute', right: 12}} onPress={toggleShowPassword}>
+            <Icon name={viewPassword ? 'eye' : 'eye-slash'} size={22} color='black' style={{ marginHorizontal: 10 }} />
           </TouchableOpacity>
       </View>
       {loginError && <Text style={styles.errorMsg}>{loginError}</Text>}

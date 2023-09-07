@@ -10,7 +10,8 @@ const HomeScreen = () => {
   console.log('HomeScreen')
   useEffect(() => {
     const getUserName = async () => {
-      try { 
+      try { 
+      
         const savedName = await AsyncStorage.getItem('userName');
         console.log(`Current UserName: ${savedName}`);
         if (savedName) {
