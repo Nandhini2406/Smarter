@@ -13,6 +13,9 @@ const HomeScreen = () => {
       try {
         const savedName = await AsyncStorage.getItem('userName');
         console.log(`Current UserName: ${savedName}`);
+        const allKeys = await AsyncStorage.getAllKeys();
+        console.log(`All keys...: ${allKeys}`);
+
         if (savedName) {
           setName(savedName);
         }
@@ -22,7 +25,7 @@ const HomeScreen = () => {
       }
     };
     getUserName();
-  }, []);
+  }, [name]);
 
   const viewProfilePressed = () => {
     navigation.navigate('ProfileScreen');

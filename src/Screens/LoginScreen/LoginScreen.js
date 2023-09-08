@@ -31,14 +31,13 @@ const LoginScreen = () => {
           //const userEmail = email; 
           await AsyncStorage.setItem('savedEmail', email);
           console.log('savedEmail', email);
-          let savedName = user.name
-          await AsyncStorage.setItem('userName', savedName);
-          console.log(`savedName.... ${savedName}`);
-          
           setLoginError(null);
           console.log('Authentication successful');
           Alert.alert('Authentication successful')
           navigation.navigate('HomeScreen');
+          let savedName = user.name
+          await AsyncStorage.setItem('userName', savedName);
+          console.log(`savedName.... ${savedName}`);
         } else {
           setLoginError('Invalid email or password. Please try again.');
           console.log('Try Again...Authentication failed');
