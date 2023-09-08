@@ -11,7 +11,7 @@ import {useNavigation} from '@react-navigation/native';
 import CustomInput from '../../Components/CustomTextInput/CustomInput';
 import CustomButton from '../../Components/CustomButton/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Feather';
 
 
 const LoginScreen = () => {
@@ -20,7 +20,7 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('');
   const [viewPassword, setViewPassword] = useState(false);
   const [loginError, setLoginError] = useState(null);
-  let name = '';
+  const name = '';
 
   const loginBtnPressed = async () => {
     try {
@@ -37,13 +37,6 @@ const LoginScreen = () => {
           //const userEmail = email;
           await AsyncStorage.setItem('savedEmail', email);
           console.log('savedEmail', email);
-<<<<<<< HEAD
-=======
-          let savedName = user.name;
-          await AsyncStorage.setItem('userName', savedName);
-          console.log(`savedName.... ${savedName}`);
-
->>>>>>> origin/main
           setLoginError(null);
           console.log('Authentication successful');
           Alert.alert('Authentication successful');
@@ -55,6 +48,10 @@ const LoginScreen = () => {
           setLoginError('Invalid email or password. Please try again.');
           console.log('Try Again...Authentication failed');
         }
+        // let savedName = user.name;
+        // await AsyncStorage.setItem('userName', savedName);
+        // console.log(`savedName.... ${savedName}`);
+
       } else {
         setLoginError('User not found.');
         console.log('Authentication failed...User not found');
@@ -91,7 +88,7 @@ const LoginScreen = () => {
           onChangeText={text => setPassword(text)}
           value={password}/>
           <TouchableOpacity style={{ position: 'absolute', right: 12}} onPress={toggleShowPassword}>
-            <Icon name={viewPassword ? 'eye' : 'eye-slash'} size={22} color='black' style={{ marginHorizontal: 10 }} />
+            <Icon name={viewPassword ? 'eye' : 'eye-off'} size={25} color='black' style={{ padding: 5 }} />
           </TouchableOpacity>
       </View>
       {loginError && <Text style={styles.errorMsg}>{loginError}</Text>}

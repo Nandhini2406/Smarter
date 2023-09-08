@@ -8,10 +8,10 @@ const HomeScreen = () => {
   const navigation = useNavigation();
   const [name, setName] = useState('');
   console.log('HomeScreen')
+
   useEffect(() => {
     const getUserName = async () => {
       try { 
-      
         const savedName = await AsyncStorage.getItem('userName');
         console.log(`Current UserName: ${savedName}`);
         const allKeys = await AsyncStorage.getAllKeys();
@@ -76,14 +76,13 @@ const styles = StyleSheet.create({
     color: 'purple',
     fontSize: 24,
     fontStyle: 'italic',
+    fontWeight: 'bold',
     margin: 15,
   },
   menu: {
     flexDirection: 'column',
-    //textAlign: 'right',
     alignItems: 'flex-end',
-    //justifyContent: 'flex-end',
-    marginLeft: 60,
+    marginHorizontal: 50,
   },
 });
 

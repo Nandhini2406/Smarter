@@ -17,8 +17,7 @@ const ProfileScreen = () => {
   useEffect(() => {
     const getUserData = async () => {
       try {
-      
-        const savedEmail = await AsyncStorage.getItem('savedEmail'); // user 
+        const savedEmail = await AsyncStorage.getItem('savedEmail'); // user
         // Use the email to fetch the user's details
         const userKey = `user_${savedEmail}`;
         console.log(`Saved email... ${savedEmail}`);
@@ -35,12 +34,16 @@ const ProfileScreen = () => {
           setAddress(user.address || '');
           setCompany(user.company || '');
         }
-      } catch(error) {
+      } catch (error) {
         console.error('Error retrieving user data:', error);
       }
     };
     getUserData();
   }, []);
+
+  const backBtnPressed = () => {
+    navigation.navigate('HomeScreen');
+  };
 
   return (
     <View style={styles.root}>
@@ -68,7 +71,14 @@ const ProfileScreen = () => {
         <Text style={styles.text1}>Company: </Text>
         <Text style={styles.text2}>{company}</Text>
       </View>
-      {/*                <CustomButton ></CustomButton> */}
+      <View style={styles.buttonView}>
+        <CustomButton
+          text="Back to Home"
+          type="Tertiary"
+          onPress={backBtnPressed}
+          style={{alignItems: 'center'}}
+        />
+      </View>
     </View>
   );
 };
@@ -81,6 +91,10 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     margin: 10,
+  },
+  buttonView: {
+    alignItems: 'center',
+    marginTop: 10,
   },
   text1: {
     fontSize: 18,

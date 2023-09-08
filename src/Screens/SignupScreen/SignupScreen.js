@@ -56,7 +56,7 @@ const SignupScreen = () => {
 
 
   const matchPassword = () => {
-    if(setPassword != setConfirmPassword){
+    if(password !== confirmPassword){
       setconfirmPasswordError('Password is not matching ')
     } else {
       setconfirmPasswordError(null)
@@ -101,8 +101,8 @@ const SignupScreen = () => {
     }
   };
   
-  return (
-    <ScrollView>
+    return (
+    <ScrollView style={{ flex: 1}}>
     <View style={styles.root}>
       <Text style={styles.title}>Sign Up Here!</Text>
       <CustomInput
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   errorMsg: {
-    fontSize: 10,
+    fontSize: 12,
     color: 'red',
     textAlign: 'right'
   },

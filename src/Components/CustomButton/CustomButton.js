@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
      
       //padding: 5,
       alignItems: 'center',
-      width : 100,
+      //width : 100,
     },
     text: {
       fontWeight: 'bold',
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
       fontSize: 20,
     },
     text_Tertiary: {
-      fontSize: 12,
+      fontSize: 14,
       color: 'purple',
     },
 });

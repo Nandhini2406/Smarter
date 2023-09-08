@@ -25,6 +25,7 @@ const Navigator = () => {
           const savedEmail = await AsyncStorage.getItem('savedEmail');
           const userName = await AsyncStorage.getItem('userName');
           const userKeys = await AsyncStorage.getAllKeys();
+          //await AsyncStorage.clear()
           console.log(`User Keys in asyncStorage.... [${userKeys}]`)
           console.log(`User email.... ${savedEmail}`)
           console.log(`User Name.... ${userName}`)
