@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     
       borderWidth: 1,
       borderColor: 'gray',
-      borderRadius: 8,
+      borderRadius: 15,
     }
 });
 

@@ -24,9 +24,8 @@ const styles = StyleSheet.create({
       padding: 10,
       alignItems: 'center',
       backgroundColor: 'purple',
-      borderWidth: 1,
-      borderColor: 'black',
-      borderRadius: 5,
+  
+      borderRadius: 20,
     },
     container_Tertiary: {
       //alignItems: 'flex-end',

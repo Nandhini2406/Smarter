@@ -22,12 +22,19 @@ const Navigator = () => {
       
       const checkAuthentication = async () => {
         try {
-          const userToken = await AsyncStorage.getItem('savedEmail');
-          console.log(`User email ${userToken}`)
-          if (userToken) {
+          const savedEmail = await AsyncStorage.getItem('savedEmail');
+          const userName = await AsyncStorage.getItem('userName');
+          const userKeys = await AsyncStorage.getAllKeys();
+          console.log(`User Keys in asyncStorage.... [${userKeys}]`)
+          console.log(`User email.... ${savedEmail}`)
+          console.log(`User Name.... ${userName}`)
+
+
+          if (savedEmail) {
             // User is authenticated
             setAuthenticated(true);
           }
+
         } catch (error) {
           console.error('Error checking authentication:', error);
         } finally {
@@ -50,13 +57,13 @@ const Navigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName={authenticated? "HomeScreen" : "WelcomeScreen" } >
-          <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ title: 'Home' }} />
-          <Stack.Screen name="ProfileScreen" component={ProfileScreen} options={{ title: 'Profile' }}/>
           <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ title: '' }}/>
-          <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ title: 'Login' }}/>
-          <Stack.Screen name="SetPassword" component={SetPassword} options={{ title: 'Reset' }}/>
           <Stack.Screen name="SignupScreen" component={SignupScreen} options={{ title: 'Sign up' }} />
           <Stack.Screen name="UserDetailsScreen" component={UserDetailsScreen} options={{ title: 'User Details' }} />
+          <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ title: 'Login' }}/>
+          <Stack.Screen name="SetPassword" component={SetPassword} options={{ title: 'Reset' }}/>
+          <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ title: 'Home' }} />
+          <Stack.Screen name="ProfileScreen" component={ProfileScreen} options={{ title: 'Profile' }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
