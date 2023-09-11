@@ -70,6 +70,7 @@ const SetPassword = () => {
         placeholder="Email Id"
         setvalue={text => setEmail(text)}
         value={email}
+        autoCapitalize='none'
       />
       <CustomButton
         text="Reset Password now"

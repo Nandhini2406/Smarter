@@ -14,18 +14,21 @@ const CustomButton = ({onPress, text, type = 'Primary'}) => {
 const styles = StyleSheet.create({
     container: {
       width : 300,
-      marginTop: 20,
+      margin: 20,
       padding: 10,
       alignItems: 'center',
     },
     container_Primary:{
       width : 300,
+      margin: 10,
       marginTop: 20,
+
       padding: 10,
       alignItems: 'center',
+   
       backgroundColor: 'purple',
   
-      borderRadius: 20,
+      borderRadius: 25,
     },
     container_Tertiary: {
       //alignItems: 'flex-end',

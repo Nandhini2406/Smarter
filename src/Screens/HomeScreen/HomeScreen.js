@@ -27,7 +27,7 @@ const HomeScreen = () => {
     };
     getUserName();
   }, [name]);
-
+  
   const viewProfilePressed = () => {
     navigation.navigate('ProfileScreen');
   };

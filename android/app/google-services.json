@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "158552171805",
+    "project_id": "smarter-e24e6",
+    "storage_bucket": "smarter-e24e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158552171805:android:55842b26b119620c4f2df4",
+        "android_client_info": {
+          "package_name": "com.smarter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPNWn6K5XnqUAL0x9FzWrZC5_bqSToo6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -127,6 +127,7 @@ const UserDetailsScreen = () => {
           setvalue={text => setEmail(text)}
           value={email}
           onBlur={validateEmail}
+          autoCapitalize='none'
         />
         {emailError && <Text style={styles.errorMsg}>{emailError}</Text>}
 
@@ -144,8 +145,12 @@ const UserDetailsScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 30,
-    marginHorizontal: 20,
+     marginTop: 40,
+    margin: 35,
+    flex: 1,
+    justifyContent: 'center',
+    //alignItems: 'center',
+
   },
 
   titleText: {

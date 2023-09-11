@@ -18,3 +18,4 @@ public class ReactNativeFlipper {
     // Do nothing as we don't want to initialize Flipper on Release.
   }
 }
+ 
