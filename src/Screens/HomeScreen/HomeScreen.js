@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomButton from '../../Components/CustomButton/CustomButton';
+import notifee from '@notifee/react-native';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -36,6 +37,38 @@ const HomeScreen = () => {
     navigation.navigate('LoginScreen');
   };
 
+  // const crashtBtnPressed = () => {
+  //   throw new Error('Test Crash');
+  // };
+
+    async function onDisplayNotification() {
+      // Request permissions (required for iOS)
+      await notifee.requestPermission()
+  
+      // Create a channel (required for Android)
+      const channelId = await notifee.createChannel({
+        id: 'default',
+        name: 'Default Channel',
+      });
+  
+      // Display a notification
+      await notifee.displayNotification({
+        title: 'Smarter',
+        body: 'Successful Login',
+        android: {
+          channelId,
+          smallIcon: 'ic_launcher', // optional, defaults to 'ic_launcher'.
+          // pressAction is needed if you want the notification to open the app when pressed
+          pressAction: {
+            id: 'default',
+          },
+        },
+      });
+    };
+
+
+  
+
   // const retrieveData = async () => {
   //   try {
   //     const value = await AsyncStorage.getItem();
@@ -59,6 +92,16 @@ const HomeScreen = () => {
           text="Log Out"
           type="Tertiary"
           onPress={logOutBtnPressed}
+        />
+         {/* <CustomButton
+          text="Test Crash"
+          type="Tertiary"
+          onPress={crashtBtnPressed}
+        /> */}
+        <CustomButton
+          text='FGnotification'
+          type="Tertiary"
+          onPress={onDisplayNotification}
         />
       </View>
      </View>

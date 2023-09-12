@@ -5,7 +5,7 @@
  * @format
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -15,11 +15,19 @@ import {
   View,
 } from 'react-native';
 import Navigator from './src/Navigation/Navigator';
-
+// import { requestUserPermission, getFCMToken} from './src/Components/PushNotification';
+import { requestUserPermission, getFCMToken, notificationListner} from './src/Components/PushNotification/Pushnotification'
 
 // const { value, setValue } = useState(' ')
 
 const App = () => {
+
+  useEffect(() => {
+    requestUserPermission();
+    //getFCMToken();
+    notificationListner();
+  }, []);
+
   return (
     <Navigator></Navigator>
   );
