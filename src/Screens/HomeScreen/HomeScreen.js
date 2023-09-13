@@ -1,9 +1,10 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Button} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomButton from '../../Components/CustomButton/CustomButton';
 import notifee from '@notifee/react-native';
+import analytics from '@react-native-firebase/analytics';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -37,9 +38,9 @@ const HomeScreen = () => {
     navigation.navigate('LoginScreen');
   };
 
-  // const crashtBtnPressed = () => {
-  //   throw new Error('Test Crash');
-  // };
+  const crashtBtnPressed = () => {
+    throw new Error('Test Crash');
+  };
 
     async function onDisplayNotification() {
       // Request permissions (required for iOS)
@@ -93,15 +94,28 @@ const HomeScreen = () => {
           type="Tertiary"
           onPress={logOutBtnPressed}
         />
-         {/* <CustomButton
+         <CustomButton
           text="Test Crash"
           type="Tertiary"
           onPress={crashtBtnPressed}
-        /> */}
+        />
         <CustomButton
           text='FGnotification'
           type="Tertiary"
           onPress={onDisplayNotification}
+        />
+        <CustomButton
+          text='Analytics Test'
+          type="Tertiary"
+          onPress={async () =>
+            await analytics().logEvent('basket', {
+              id: 3745092,
+              item: 'mens grey t-shirt',
+              description: ['round neck', 'long sleeved'],
+              size: 'L',
+              
+            })
+          }
         />
       </View>
      </View>

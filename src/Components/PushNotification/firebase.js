@@ -5,7 +5,7 @@ import 'firebase/crashlytics'; // For Crashlytics
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBPNWn6K5XnqUAL0x9FzWrZC5_bqSToo6A',
-  authDomain: 'YOUR_AUTH_DOMAIN',
+  authDomain: 'smarter-e24e6.firebaseapp.com',
   projectId: 'smarter-e24e6',
   storageBucket: 'smarter-e24e6.appspot.com',
   messagingSenderId: '158552171805',

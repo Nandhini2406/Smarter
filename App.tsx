@@ -17,14 +17,14 @@ import {
 import Navigator from './src/Navigation/Navigator';
 // import { requestUserPermission, getFCMToken} from './src/Components/PushNotification';
 import { requestUserPermission, getFCMToken, notificationListner} from './src/Components/PushNotification/Pushnotification'
+import crashlytics from '@react-native-firebase/crashlytics';
 
-// const { value, setValue } = useState(' ')
 
 const App = () => {
 
   useEffect(() => {
     requestUserPermission();
-    //getFCMToken();
+    getFCMToken();
     notificationListner();
   }, []);
 

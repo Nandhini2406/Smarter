@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomButton from '../../Components/CustomButton/CustomButton';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
@@ -14,34 +15,46 @@ const ProfileScreen = () => {
   const [address, setAddress] = useState('');
   const [company, setCompany] = useState('');
 
-  useEffect(() => {
-    const getUserData = async () => {
-      try {
-        const savedEmail = await AsyncStorage.getItem('savedEmail'); // user
-        // Use the email to fetch the user's details
-        const userKey = `user_${savedEmail}`;
-        console.log(`Saved email... ${savedEmail}`);
-        console.log(`User Key... ${userKey}`);
-        const userData = await AsyncStorage.getItem(userKey);
-        const user = JSON.parse(userData);
+  const getUserData = async () => {
+    try {
 
-        // Set the user's details in the state
-        if (user) {
-          setName(user.name || '');
-          setPhoneNumber(user.phoneNumber || '');
-          setEmail(user.email || ''); // Use the fetched email
-          setLocation(user.location || '');
-          setAddress(user.address || '');
-          setCompany(user.company || '');
-        }
-      } catch (error) {
-        console.error('Error retrieving user data:', error);
+      // crashlytics().setUserId('userId');
+      // // If u have single value return from response
+      // crashlytics().setAttribute('userName', 'userName Value');
+
+
+      const savedEmail = await AsyncStorage.getItem('savedEmail'); // user
+      // Use the email to fetch the user's details
+      const userKey = `user_${savedEmail}`;
+      console.log(`Saved email... ${savedEmail}`);
+      console.log(`User Key... ${userKey}`);
+      const userData = await AsyncStorage.getItem(userKey);
+      const user = JSON.parse(userData);
+
+      // Set the user's details in the state
+      if (user) {
+        setName(user.name || '');
+        setPhoneNumber(user.phoneNumber || '');
+        setEmail(user.email || ''); // Use the fetched email
+        setLocation(user.location || '');
+        setAddress(user.address || '');
+        setCompany(user.company || '');
       }
-    };
+    } catch (error) {
+      crashlytics().recordError(err);
+      console.error('Error retrieving user data:', error);
+    }
+  };
+
+  useEffect(() => {
     getUserData();
+    return () => {
+      crashlytics().log('Analytics Page Just Unmounted');
+    };
   }, []);
 
   const backBtnPressed = () => {
+    crashlytics().log('Analytics Page Just Mounted');
     navigation.navigate('HomeScreen');
   };
 

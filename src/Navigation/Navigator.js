@@ -56,7 +56,7 @@ const Navigator = () => {
     }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer >
       <Stack.Navigator initialRouteName={authenticated? "HomeScreen" : "WelcomeScreen" } >
           <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ title: '' }}/>
           <Stack.Screen name="SignupScreen" component={SignupScreen} options={{ title: 'Sign up' }} />
