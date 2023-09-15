@@ -67,9 +67,6 @@ const HomeScreen = () => {
       });
     };
 
-
-  
-
   // const retrieveData = async () => {
   //   try {
   //     const value = await AsyncStorage.getItem();
