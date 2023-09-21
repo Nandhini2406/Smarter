@@ -51,14 +51,16 @@ const HomeScreen = () => {
         id: 'default',
         name: 'Default Channel',
       });
-  
+      
+      
       // Display a notification
       await notifee.displayNotification({
         title: 'Smarter',
         body: 'Successful Login',
         android: {
           channelId,
-          smallIcon: 'ic_launcher', // optional, defaults to 'ic_launcher'.
+          smallIcon: 'ic_stat', // optional, defaults to 'ic_launcher'.
+          color: '#9c27b0',
           // pressAction is needed if you want the notification to open the app when pressed
           pressAction: {
             id: 'default',
