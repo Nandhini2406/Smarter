@@ -11,7 +11,8 @@ import {useNavigation} from '@react-navigation/native';
 import CustomInput from '../../Components/CustomTextInput/CustomInput';
 import CustomButton from '../../Components/CustomButton/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Icon from 'react-native-vector-icons/Feather';
+// import Icon from 'react-native-vector-icons/Feather';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import notifee from '@notifee/react-native';
 
 
@@ -41,7 +42,7 @@ const LoginScreen = () => {
           setLoginError(null);
           console.log('Authentication successful');
           Alert.alert('Authentication successful');
-          navigation.navigate('HomeScreen');
+          navigation.navigate('BottomTabBar');
           let savedName = user.name
           await AsyncStorage.setItem('userName', savedName);
           console.log(`savedName.... ${savedName}`);
@@ -89,7 +90,7 @@ const LoginScreen = () => {
           onChangeText={text => setPassword(text)}
           value={password}/>
           <TouchableOpacity style={{ position: 'absolute', right: 12}} onPress={toggleShowPassword}>
-            <Icon name={viewPassword ? 'eye' : 'eye-off'} size={25} color='black' style={{ padding: 5 }} />
+            <FontAwesome name={viewPassword ? 'eye' : 'eye-slash'} size={28} color='black' style={{ padding: 7 }} />
           </TouchableOpacity>
       </View>
       {loginError && <Text style={styles.errorMsg}>{loginError}</Text>}

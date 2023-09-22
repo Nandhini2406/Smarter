@@ -2,7 +2,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import CustomButton from '../../Components/CustomButton/CustomButton';
+import CustomButton from '../../../Components/CustomButton/CustomButton';
 import crashlytics from '@react-native-firebase/crashlytics';
 
 const ProfileScreen = () => {
@@ -17,11 +17,9 @@ const ProfileScreen = () => {
 
   const getUserData = async () => {
     try {
-
       // crashlytics().setUserId('userId');
       // // If u have single value return from response
       // crashlytics().setAttribute('userName', 'userName Value');
-
 
       const savedEmail = await AsyncStorage.getItem('savedEmail'); // user
       // Use the email to fetch the user's details

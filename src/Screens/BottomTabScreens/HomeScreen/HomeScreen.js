@@ -2,18 +2,18 @@ import {View, Text, StyleSheet, Button} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import CustomButton from '../../Components/CustomButton/CustomButton';
+import CustomButton from '../../../Components/CustomButton/CustomButton';
 import notifee from '@notifee/react-native';
 import analytics from '@react-native-firebase/analytics';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [name, setName] = useState('');
-  console.log('HomeScreen')
+  console.log('HomeScreen');
 
   useEffect(() => {
     const getUserName = async () => {
-      try { 
+      try {
         const savedName = await AsyncStorage.getItem('userName');
         console.log(`Current UserName: ${savedName}`);
         const allKeys = await AsyncStorage.getAllKeys();
@@ -29,7 +29,7 @@ const HomeScreen = () => {
     };
     getUserName();
   }, [name]);
-  
+
   const viewProfilePressed = () => {
     navigation.navigate('ProfileScreen');
   };
@@ -42,32 +42,31 @@ const HomeScreen = () => {
     throw new Error('Test Crash');
   };
 
-    async function onDisplayNotification() {
-      // Request permissions (required for iOS)
-      await notifee.requestPermission()
-  
-      // Create a channel (required for Android)
-      const channelId = await notifee.createChannel({
-        id: 'default',
-        name: 'Default Channel',
-      });
-      
-      
-      // Display a notification
-      await notifee.displayNotification({
-        title: 'Smarter',
-        body: 'Successful Login',
-        android: {
-          channelId,
-          smallIcon: 'ic_stat', // optional, defaults to 'ic_launcher'.
-          color: '#9c27b0',
-          // pressAction is needed if you want the notification to open the app when pressed
-          pressAction: {
-            id: 'default',
-          },
+  async function onDisplayNotification() {
+    // Request permissions (required for iOS)
+    await notifee.requestPermission();
+
+    // Create a channel (required for Android)
+    const channelId = await notifee.createChannel({
+      id: 'default',
+      name: 'Default Channel',
+    });
+
+    // Display a notification
+    await notifee.displayNotification({
+      title: 'Smarter',
+      body: 'Successful Login',
+      android: {
+        channelId,
+        smallIcon: 'ic_stat', // optional, defaults to 'ic_launcher'.
+        color: '#9c27b0',
+        // pressAction is needed if you want the notification to open the app when pressed
+        pressAction: {
+          id: 'default',
         },
-      });
-    };
+      },
+    });
+  }
 
   // const retrieveData = async () => {
   //   try {
@@ -93,18 +92,18 @@ const HomeScreen = () => {
           type="Tertiary"
           onPress={logOutBtnPressed}
         />
-         <CustomButton
+        <CustomButton
           text="Test Crash"
           type="Tertiary"
           onPress={crashtBtnPressed}
         />
         <CustomButton
-          text='FGnotification'
+          text="FGnotification"
           type="Tertiary"
           onPress={onDisplayNotification}
         />
         <CustomButton
-          text='Analytics Test'
+          text="Analytics Test"
           type="Tertiary"
           onPress={async () =>
             await analytics().logEvent('basket', {
@@ -112,12 +111,11 @@ const HomeScreen = () => {
               item: 'mens grey t-shirt',
               description: ['round neck', 'long sleeved'],
               size: 'L',
-              
             })
           }
         />
       </View>
-     </View>
+    </View>
   );
 };
 

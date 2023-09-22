@@ -3,13 +3,14 @@ import React, {useEffect, useState} from 'react';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import WelcomeScreen from '../Screens/WelcomeScreen/WelcomeScreen';
 import SignupScreen from '../Screens/SignupScreen/SignupScreen';
 import UserDetailsScreen from '../Screens/UserDetailsScreen/UserDetailsScreen';
 import LoginScreen from '../Screens/LoginScreen/LoginScreen';
 import SetPassword from '../Screens/SetPassword/SetPassword';
-import HomeScreen from '../Screens/HomeScreen/HomeScreen';
-import ProfileScreen from '../Screens/Profilescreen/ProfileScreen';
+import BottomTabBar from './BottomTabBar';
+
 import {Linking} from 'react-native';
 
 const Stack = createStackNavigator();
@@ -50,24 +51,23 @@ const Navigator = () => {
         setLoading(false);
       }
     };
-    
-    const handleUrl = async (event) => {
+
+    const handleUrl = async event => {
       const url = event.url;
       const route = url.replace(/.*?:\/\//g, '');
-      
+
       if (route === 'login') {
-       // navigation.navigate('LoginScreen');
+        // navigation.navigate('LoginScreen');
       }
     };
-    
+
     Linking.addEventListener('url', handleUrl);
     checkAuthentication();
-    
+
     // Don't forget to clean up the event listener when the component unmounts
     return () => {
       Linking.removeEventListener('url', handleUrl);
     };
-
   }, []);
 
   if (loading) {
@@ -81,7 +81,7 @@ const Navigator = () => {
   return (
     <NavigationContainer linking={linking} fallback={<Text>Loading...</Text>}>
       <Stack.Navigator
-        initialRouteName={authenticated ? 'HomeScreen' : 'WelcomeScreen'}>
+        initialRouteName={authenticated ? 'BottomTabBar' : 'WelcomeScreen'}>
         <Stack.Screen
           name="WelcomeScreen"
           component={WelcomeScreen}
@@ -108,14 +108,9 @@ const Navigator = () => {
           options={{title: 'Reset'}}
         />
         <Stack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
-          options={{title: 'Home'}}
-        />
-        <Stack.Screen
-          name="ProfileScreen"
-          component={ProfileScreen}
-          options={{title: 'Profile'}}
+          name="BottomTabBar"
+          component={BottomTabBar}
+          options={{title: ''}}
         />
       </Stack.Navigator>
     </NavigationContainer>

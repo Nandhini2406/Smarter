@@ -84,7 +84,7 @@ const UserDetailsScreen = () => {
       Alert.alert('User details saved successfully');
       await AsyncStorage.setItem('savedEmail', email);
       await AsyncStorage.setItem('userName', updatedUser.name)
-      navigation.navigate('HomeScreen');
+      navigation.navigate('BottomTabBar');
     } catch (error) {
       console.error('Error saving user data:', error);
     }
