@@ -1,24 +1,7 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React, { useState, useEffect } from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
 import Navigator from './src/Navigation/Navigator';
-// import { requestUserPermission, getFCMToken} from './src/Components/PushNotification';
 import { requestUserPermission, getFCMToken, notificationListner} from './src/Components/PushNotification/Pushnotification'
 import crashlytics from '@react-native-firebase/crashlytics';
-
 
 const App = () => {
 
@@ -29,7 +12,7 @@ const App = () => {
   }, []);
 
   return (
-    <Navigator></Navigator>
+    <Navigator />
   );
 };
 

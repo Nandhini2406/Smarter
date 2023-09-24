@@ -10,6 +10,7 @@ import UserDetailsScreen from '../Screens/UserDetailsScreen/UserDetailsScreen';
 import LoginScreen from '../Screens/LoginScreen/LoginScreen';
 import SetPassword from '../Screens/SetPassword/SetPassword';
 import BottomTabBar from './BottomTabBar';
+import DrawerNavigation from './DrawerNavigation';
 
 import {Linking} from 'react-native';
 
@@ -82,6 +83,11 @@ const Navigator = () => {
     <NavigationContainer linking={linking} fallback={<Text>Loading...</Text>}>
       <Stack.Navigator
         initialRouteName={authenticated ? 'BottomTabBar' : 'WelcomeScreen'}>
+        <Stack.Screen
+          name="DrawerNavigator"
+          component={DrawerNavigation} // Use the DrawerNavigation component
+          options={{headerShown: false}} // Hide the header for the DrawerNavigator
+        />
         <Stack.Screen
           name="WelcomeScreen"
           component={WelcomeScreen}
