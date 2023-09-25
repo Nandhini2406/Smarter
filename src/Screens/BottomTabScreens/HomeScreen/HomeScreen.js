@@ -80,18 +80,8 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.root}>
-      <Text style={styles.text}>Welcome {name} !</Text>
+      <Text style={styles.text}>Hello {name} !</Text>
       <View style={styles.menu}>
-        <CustomButton
-          text="View Profile"
-          type="Tertiary"
-          onPress={viewProfilePressed}
-        />
-        <CustomButton
-          text="Log Out"
-          type="Tertiary"
-          onPress={logOutBtnPressed}
-        />
         <CustomButton
           text="Test Crash"
           type="Tertiary"

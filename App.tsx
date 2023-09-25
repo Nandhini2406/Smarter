@@ -1,3 +1,5 @@
+import 'react-native-gesture-handler';
+import 'react-native-reanimated';
 import React, { useState, useEffect } from 'react';
 import Navigator from './src/Navigation/Navigator';
 import { requestUserPermission, getFCMToken, notificationListner} from './src/Components/PushNotification/Pushnotification'
@@ -9,6 +11,7 @@ const App = () => {
     requestUserPermission();
     getFCMToken();
     notificationListner();
+    console.log('Hello world')
   }, []);
 
   return (

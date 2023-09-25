@@ -62,19 +62,19 @@ const Navigator = () => {
       }
     };
 
-    Linking.addEventListener('url', handleUrl);
+    // Linking.addEventListener('url', handleUrl);
     checkAuthentication();
 
     // Don't forget to clean up the event listener when the component unmounts
-    return () => {
-      Linking.removeEventListener('url', handleUrl);
-    };
+    // return () => {
+    //   Linking.removeEventListener('url', handleUrl);
+    // };
   }, []);
 
   if (loading) {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <ActivityIndicator size="large" />
+        <ActivityIndicator size="large" color='purple'/>
       </View>
     );
   }
@@ -82,12 +82,9 @@ const Navigator = () => {
   return (
     <NavigationContainer linking={linking} fallback={<Text>Loading...</Text>}>
       <Stack.Navigator
-        initialRouteName={authenticated ? 'BottomTabBar' : 'WelcomeScreen'}>
-        <Stack.Screen
-          name="DrawerNavigator"
-          component={DrawerNavigation} // Use the DrawerNavigation component
-          options={{headerShown: false}} // Hide the header for the DrawerNavigator
-        />
+        initialRouteName={authenticated ? 'BottomTabBar' : 'WelcomeScreen'}
+        headerMode="none" // Remove the header to make room for Drawer
+        >
         <Stack.Screen
           name="WelcomeScreen"
           component={WelcomeScreen}
@@ -101,12 +98,12 @@ const Navigator = () => {
         <Stack.Screen
           name="UserDetailsScreen"
           component={UserDetailsScreen}
-          options={{title: 'User Details'}}
+          options={{title: 'User Details', headerShown: false}}
         />
         <Stack.Screen
           name="LoginScreen"
           component={LoginScreen}
-          options={{title: 'Login'}}
+          options={{title: 'Login', headerShown: false}}
         />
         <Stack.Screen
           name="SetPassword"
@@ -115,9 +112,14 @@ const Navigator = () => {
         />
         <Stack.Screen
           name="BottomTabBar"
-          component={BottomTabBar}
-          options={{title: ''}}
+          component={DrawerNavigation} // Use DrawerNavigation as a screen
+          options={{title: '', headerShown: false}}
         />
+        {/* <Stack.Screen
+          name="DrawerNavigator"
+          component={DrawerNavigation} // Use the DrawerNavigation component
+          options={{headerShown: true, title:'Menu'}} // Hide the header for the DrawerNavigator
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
