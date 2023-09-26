@@ -16,9 +16,8 @@ const BottomTabBar = () => {
       screenOptions={({route}) => ({
         tabBarActiveTintColor: 'purple',
         tabBarInactiveTintColor: 'grey',
-        
        tabBarStyle: {height:60, padding: 10},
-        headerShown: false,
+        //headerShown: false,
         tabBarLabelStyle: {fontSize: 14, paddingBottom:5, fontWeight:'bold'},
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
@@ -42,7 +41,7 @@ const BottomTabBar = () => {
       <Tab.Screen
         name="PayScreen"
         component={PayScreen}
-        options={{tabBarLabel: 'Pay', title: 'Pay', headerShown: false}}
+        options={{tabBarLabel: 'Pay', title: 'Pay'}}
       />
       <Tab.Screen
         name="ShopScreen"
