@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Alert,
   TextInput,
+  Image,
   TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
@@ -11,10 +12,8 @@ import {useNavigation} from '@react-navigation/native';
 import CustomInput from '../../Components/CustomTextInput/CustomInput';
 import CustomButton from '../../Components/CustomButton/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// import Icon from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import notifee from '@notifee/react-native';
-
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -43,7 +42,7 @@ const LoginScreen = () => {
           console.log('Authentication successful');
           Alert.alert('Authentication successful');
           navigation.navigate('BottomTabBar');
-          let savedName = user.name
+          let savedName = user.name;
           await AsyncStorage.setItem('userName', savedName);
           console.log(`savedName.... ${savedName}`);
         } else {
@@ -53,7 +52,6 @@ const LoginScreen = () => {
         // let savedName = user.name;
         // await AsyncStorage.setItem('userName', savedName);
         // console.log(`savedName.... ${savedName}`);
-
       } else {
         setLoginError('User not found.');
         console.log('Authentication failed...User not found');
@@ -75,6 +73,7 @@ const LoginScreen = () => {
 
   return (
     <View style={styles.root}>
+      <Image source={require('../../Assets/Images/Revenue-amico.png')} style={{height: 200, width: 200 }}/>
       <Text style={styles.greet}>Welcome Back!</Text>
       <CustomInput
         placeholder="Email Address"
@@ -88,10 +87,18 @@ const LoginScreen = () => {
           placeholder="Password"
           secureTextEntry={!viewPassword}
           onChangeText={text => setPassword(text)}
-          value={password}/>
-          <TouchableOpacity style={{ position: 'absolute', right: 12}} onPress={toggleShowPassword}>
-            <FontAwesome name={viewPassword ? 'eye' : 'eye-slash'} size={28} color='black' style={{ padding: 7 }} />
-          </TouchableOpacity>
+          value={password}
+        />
+        <TouchableOpacity
+          style={{position: 'absolute', right: 12}}
+          onPress={toggleShowPassword}>
+          <FontAwesome
+            name={viewPassword ? 'eye' : 'eye-slash'}
+            size={28}
+            color="black"
+            style={{padding: 7}}
+          />
+        </TouchableOpacity>
       </View>
       {loginError && <Text style={styles.errorMsg}>{loginError}</Text>}
       <CustomButton text="Login" onPress={loginBtnPressed} />
@@ -114,7 +121,7 @@ const styles = StyleSheet.create({
   greet: {
     fontWeight: 'bold',
     fontSize: 25,
-    color: 'purple',
+    color: '#ff0066',
   },
   errorMsg: {
     fontSize: 10,
@@ -135,7 +142,6 @@ const styles = StyleSheet.create({
   input: {
     padding: 10,
     width: '100%',
-
   },
 });
 

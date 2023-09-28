@@ -30,7 +30,7 @@ export default TaskInputField = props => {
       />
       <TouchableOpacity onPress={() => handleAddTask(task)}>
         <View style={styles.button}>
-          <MaterialIcons name="keyboard-arrow-up" size={24} color="purple" />
+          <MaterialIcons name="keyboard-arrow-up" size={24} color="#ff0066" />
         </View>
       </TouchableOpacity>
     </KeyboardAvoidingView>
@@ -40,7 +40,7 @@ export default TaskInputField = props => {
 const styles = StyleSheet.create({
   container: {
     borderColor: '#fff',
-    backgroundColor: 'purple',
+    backgroundColor: '#ff0066',
     borderWidth: 1,
     marginHorizontal: 20,
     borderRadius: 12,
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     height: 50,
     flex: 1,
     fontWeight: 'bold',
-fontSize: 20,
+    fontSize: 20,
   },
   button: {
     height: 30,

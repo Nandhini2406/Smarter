@@ -7,7 +7,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import CheckBox from '@react-native-community/checkbox';
 
 const SignupScreen = () => {
-  
   const navigation = useNavigation();
   const [username, setusername] = useState('');
   const [phoneNo, setPhoneNo] = useState('');
@@ -18,13 +17,13 @@ const SignupScreen = () => {
   const [passwordError, setPasswordError] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [confirmPasswordError, setconfirmPasswordError] = useState(null);
-  const [toggleCheckBox, setToggleCheckBox] = useState(false)
+  const [toggleCheckBox, setToggleCheckBox] = useState(false);
   const [error, setError] = useState(null);
-  
+
   const validatePhoneNumber = () => {
-    // Phone No regex pattern 
-    const phoneNoPattern =/^\d{10}$/;
-    
+    // Phone No regex pattern
+    const phoneNoPattern = /^\d{10}$/;
+
     if (!phoneNoPattern.test(phoneNo)) {
       setphoneNoError('Invalid ');
     } else {
@@ -35,18 +34,18 @@ const SignupScreen = () => {
   const validateEmail = () => {
     // Email regex pattern
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    
+
     if (!emailPattern.test(email)) {
       setEmailError('Invalid email address*');
     } else {
       setEmailError(null);
     }
   };
-  
+
   const validatePassword = () => {
     // Password regex pattern (at least 6 characters)
     const passwordPattern = /^.{6,}$/;
-    
+
     if (!passwordPattern.test(password)) {
       setPasswordError('Password must be at least 6 characters*');
     } else {
@@ -54,18 +53,17 @@ const SignupScreen = () => {
     }
   };
 
-
   const matchPassword = () => {
-    if(password !== confirmPassword){
-      setconfirmPasswordError('Password is not matching ')
+    if (password !== confirmPassword) {
+      setconfirmPasswordError('Password is not matching ');
     } else {
-      setconfirmPasswordError(null)
+      setconfirmPasswordError(null);
     }
-  }
+  };
 
-  const onSignupBtnPressed = async() => {
+  const onSignupBtnPressed = async () => {
     //to check all fields are filled
-    if (!username || !phoneNo || !email || !password || !toggleCheckBox){
+    if (!username || !phoneNo || !email || !password || !toggleCheckBox) {
       setError('Please fill in all fields.');
       return;
     }
@@ -79,8 +77,8 @@ const SignupScreen = () => {
       if (existingUser) {
         setError('User with this email already exists.');
       } else {
-        
-        const user = {  // Create a user object
+        const user = {
+          // Create a user object
           name: username,
           phoneNumber: phoneNo,
           email: email,
@@ -93,76 +91,77 @@ const SignupScreen = () => {
         await AsyncStorage.setItem('savedEmail', email);
         console.log('Email....', email);
         console.log(`User email : ${userKey}   User Data : ${user.password}`);
-
       }
     } catch (error) {
       setError('Failed to sign up. Please try again.');
       console.error('Error storing data:', error);
     }
   };
-  
-    return (
-    <ScrollView style={{ flex: 1}}>
-    <View style={styles.root}>
-      <Text style={styles.title}>Sign Up Here!</Text>
-      <CustomInput
-        placeholder="UserName"
-        setvalue={text => setusername(text)}
-        value={username}
-      />
-      <CustomInput
-        placeholder="Phone Number"
-        setvalue={text => setPhoneNo(text)}
-        value={phoneNo}
-        keyboardType={'phone-pad'}
-        onBlur={validatePhoneNumber}
-      />
-        {phoneNoError && <Text style={styles.errorMsg}>{phoneNoError}</Text>}
-      <CustomInput
-        placeholder="Email Address"
-        setvalue={text => setEmail(text)}
-        value={email}
-        onBlur={validateEmail}
-        autoCapitalize='none'
-      />
-      {emailError && <Text style={styles.errorMsg}>{emailError}</Text>}
-      <CustomInput
-        placeholder="Create Password"
-        setvalue={text => setPassword(text)}
-        value={password}
-        onBlur={validatePassword}
-        //secureTextEntry
-        autoCapitalize='none'
-      />
-      {passwordError && <Text style={styles.errorMsg}>{passwordError}</Text>}
-      <CustomInput
-        placeholder="Confirm Password"
-        setvalue={text => setConfirmPassword(text)}
-        value={confirmPassword}
-        onBlur={matchPassword}
-        //secureTextEntry
-        autoCapitalize='none'
-      />
-      {confirmPasswordError && <Text style={styles.errorMsg}>{confirmPasswordError}</Text>}
 
-      <View style={styles.checkContainer}>
-        <CheckBox 
-          disabled={false}
-          boxType='square'
-          onFillColor='green'
-          onCheckColor='white'
-          tintColor='black'
-          onTintColor='black'
-          value={toggleCheckBox}
-          onValueChange={(newValue) => setToggleCheckBox(newValue)}
+  return (
+    <ScrollView style={{flex: 1}}>
+      <View style={styles.root}>
+        <Text style={styles.title}>Sign Up Here!</Text>
+        <CustomInput
+          placeholder="UserName"
+          setvalue={text => setusername(text)}
+          value={username}
         />
-        <Text style={styles.text}> Accepts all Terms & Condition</Text>
-      </View>
+        <CustomInput
+          placeholder="Phone Number"
+          setvalue={text => setPhoneNo(text)}
+          value={phoneNo}
+          keyboardType={'phone-pad'}
+          onBlur={validatePhoneNumber}
+        />
+        {phoneNoError && <Text style={styles.errorMsg}>{phoneNoError}</Text>}
+        <CustomInput
+          placeholder="Email Address"
+          setvalue={text => setEmail(text)}
+          value={email}
+          onBlur={validateEmail}
+          autoCapitalize="none"
+        />
+        {emailError && <Text style={styles.errorMsg}>{emailError}</Text>}
+        <CustomInput
+          placeholder="Create Password"
+          setvalue={text => setPassword(text)}
+          value={password}
+          onBlur={validatePassword}
+          //secureTextEntry
+          autoCapitalize="none"
+        />
+        {passwordError && <Text style={styles.errorMsg}>{passwordError}</Text>}
+        <CustomInput
+          placeholder="Confirm Password"
+          setvalue={text => setConfirmPassword(text)}
+          value={confirmPassword}
+          onBlur={matchPassword}
+          //secureTextEntry
+          autoCapitalize="none"
+        />
+        {confirmPasswordError && (
+          <Text style={styles.errorMsg}>{confirmPasswordError}</Text>
+        )}
 
-      <CustomButton text="Sign up" onPress={onSignupBtnPressed} />
-      {error && <Text style={styles.errorMsg}>{error}</Text>}
-    </View>
-    </ScrollView> 
+        <View style={styles.checkContainer}>
+          <CheckBox
+            disabled={false}
+            boxType="square"
+            onFillColor="green"
+            onCheckColor="white"
+            tintColor="black"
+            onTintColor="black"
+            value={toggleCheckBox}
+            onValueChange={newValue => setToggleCheckBox(newValue)}
+          />
+          <Text style={styles.text}> Accepts all Terms & Condition</Text>
+        </View>
+
+        <CustomButton text="Sign up" onPress={onSignupBtnPressed} />
+        {error && <Text style={styles.errorMsg}>{error}</Text>}
+      </View>
+    </ScrollView>
   );
 };
 
@@ -175,19 +174,19 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'purple',
+    color: '#ff0066',
     marginBottom: 20,
   },
   errorMsg: {
     fontSize: 12,
     color: 'red',
-    textAlign: 'right'
+    textAlign: 'right',
   },
   checkContainer: {
     margin: 10,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
-  text:{
+  text: {
     margin: 5,
   },
 });

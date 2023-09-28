@@ -24,10 +24,10 @@ const DrawerNavigation = () => {
           width: 250,
         },
         //drawerLabelStyle:{ marginLeft: 20},
-        drawerActiveBackgroundColor: 'purple',
+        drawerActiveBackgroundColor: '#ff0066',
         drawerActiveTintColor: 'white',
-        drawerInactiveTintColor: 'purple',
-        drawerItemStyle: {borderRadius: 30}
+        drawerInactiveTintColor: '#ff0066',
+        drawerItemStyle: {borderRadius: 30},
       }}>
       <Drawer.Screen
         name="Home"
@@ -35,7 +35,7 @@ const DrawerNavigation = () => {
         options={{
           title: 'Smarter',
           drawerActiveTintColor: 'white',
-          drawerInactiveTintColor: 'purple',
+          drawerInactiveTintColor: '#ff0066',
           drawerLabelStyle: {fontSize: 25, fontWeight: 'bold'},
         }}
       />

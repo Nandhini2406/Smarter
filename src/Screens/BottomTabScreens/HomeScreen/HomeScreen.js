@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   text: {
-    color: 'purple',
+    color: '#ff0066',
     fontSize: 24,
     fontStyle: 'italic',
     fontWeight: 'bold',

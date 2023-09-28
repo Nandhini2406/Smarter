@@ -1,62 +1,65 @@
-
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, } from "react-native";
-import  MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-export default TaskItem = (props) => {
-    return (
-        <View style={styles.container}>
-            <View style={styles.indexContainer}>
-                <Text style={styles.index}>{props.index}</Text>
-            </View>
-            <View style={styles.taskContainer}>
-                <Text style={styles.task}>{props.task}</Text>
-                <TouchableOpacity onPress={() => props.deleteTask()}>
-                    <MaterialIcons style={styles.delete} name="delete" size={22} color='#fff' />
-                </TouchableOpacity>
-            </View>
-        </View>
-    );
-}
-
+export default TaskItem = props => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.indexContainer}>
+        <Text style={styles.index}>{props.index}</Text>
+      </View>
+      <View style={styles.taskContainer}>
+        <Text style={styles.task}>{props.task}</Text>
+        <TouchableOpacity onPress={() => props.deleteTask()}>
+          <MaterialIcons
+            style={styles.delete}
+            name="delete"
+            size={22}
+            color="#fff"
+          />
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'row',
-        marginHorizontal: 20,
-    },
-    indexContainer: {
-        backgroundColor: 'purple',
-        borderRadius: 12,
-        marginRight: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 50,
-        height: 50,
-    },
-    index: {
-        color: '#fff',
-        fontSize: 22,
-    },
-    taskContainer: {
-        // backgroundColor: '#3E3364',
-        backgroundColor: 'purple',
-        borderRadius: 12,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flex: 1,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        minHeight: 50,
-    },
-    task: {
-        color: '#fff',
-        width: '90%',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    delete: {
-        marginRight: 10,
-    },
+  container: {
+    flexDirection: 'row',
+    marginHorizontal: 20,
+  },
+  indexContainer: {
+    backgroundColor: '#ff0066',
+    borderRadius: 12,
+    marginRight: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 50,
+    height: 50,
+  },
+  index: {
+    color: '#fff',
+    fontSize: 22,
+  },
+  taskContainer: {
+    // backgroundColor: '#3E3364',
+    backgroundColor: '#ff0066',
+    borderRadius: 12,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flex: 1,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    minHeight: 50,
+  },
+  task: {
+    color: '#fff',
+    width: '90%',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  delete: {
+    marginRight: 10,
+  },
 });

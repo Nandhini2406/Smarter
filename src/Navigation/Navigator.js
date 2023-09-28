@@ -74,7 +74,7 @@ const Navigator = () => {
   if (loading) {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <ActivityIndicator size="large" color='purple'/>
+        <ActivityIndicator size="large" color="#ff0066" />
       </View>
     );
   }
@@ -84,7 +84,7 @@ const Navigator = () => {
       <Stack.Navigator
         initialRouteName={authenticated ? 'BottomTabBar' : 'WelcomeScreen'}
         // headerMode="none" // Remove the header to make room for Drawer
-        >
+      >
         <Stack.Screen
           name="WelcomeScreen"
           component={WelcomeScreen}

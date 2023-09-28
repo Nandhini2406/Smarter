@@ -14,11 +14,11 @@ const BottomTabBar = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
-        tabBarActiveTintColor: 'purple',
+        tabBarActiveTintColor: '#ff0066',
         tabBarInactiveTintColor: 'grey',
-       tabBarStyle: {height:60, padding: 10},
+        tabBarStyle: {height: 60, padding: 10},
         //headerShown: false,
-        tabBarLabelStyle: {fontSize: 14, paddingBottom:5, fontWeight:'bold'},
+        tabBarLabelStyle: {fontSize: 14, paddingBottom: 5, fontWeight: 'bold'},
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
           if (route.name === 'HomeScreen') {
