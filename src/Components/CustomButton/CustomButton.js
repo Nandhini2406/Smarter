@@ -17,26 +17,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container_Primary: {
-    width: 300,
-    margin: 10,
-    marginTop: 20,
-
-    padding: 10,
+    width: '70%',
+    margin: '2%',
+    padding: '2%',
     alignItems: 'center',
-
     backgroundColor: '#ff0066',
-
     borderRadius: 25,
+    
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
   container_Tertiary: {
-    //alignItems: 'flex-end',
-
-    //marginBottom: 0,
-    marginTop: 18,
-
-    //padding: 5,
+    margin: '5%',
     alignItems: 'center',
-    //width : 100,
   },
   text: {
     fontWeight: 'bold',
