@@ -5,6 +5,7 @@ import Navigator from './src/Navigation/Navigator';
 import { requestUserPermission, getFCMToken, notificationListner} from './src/Components/PushNotification/Pushnotification'
 import crashlytics from '@react-native-firebase/crashlytics';
 
+
 const App = () => {
 
   useEffect(() => {
@@ -15,7 +16,10 @@ const App = () => {
   }, []);
 
   return (
+    <>
     <Navigator />
+    {/* <BackgroundImg></BackgroundImg> */}
+ </>
   );
 };
 

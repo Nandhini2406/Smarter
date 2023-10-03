@@ -21,9 +21,10 @@ const styles = StyleSheet.create({
     margin: '2%',
     padding: '2%',
     alignItems: 'center',
-    backgroundColor: '#ff0066',
+    //backgroundColor: 'transparent',
     borderRadius: 25,
-    
+    borderWidth: 1,
+    borderColor: 'white',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

@@ -30,14 +30,6 @@ const HomeScreen = () => {
     getUserName();
   }, [name]);
 
-  const viewProfilePressed = () => {
-    navigation.navigate('ProfileScreen');
-  };
-  const logOutBtnPressed = () => {
-    console.log(`User logged out`);
-    navigation.navigate('LoginScreen');
-  };
-
   const crashtBtnPressed = () => {
     throw new Error('Test Crash');
   };
