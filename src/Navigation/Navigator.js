@@ -80,7 +80,7 @@ const Navigator = () => {
   }
 
   return (
-    <NavigationContainer linking={linking} fallback={<Text>Loading...</Text>}>
+    <NavigationContainer linking={linking} fallback={<Text>Loading...</Text>}  >
       <Stack.Navigator
         initialRouteName={authenticated ? 'BottomTabBar' : 'WelcomeScreen'}
         // headerMode="none" // Remove the header to make room for Drawer

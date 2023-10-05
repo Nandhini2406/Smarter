@@ -109,10 +109,13 @@ const styles = StyleSheet.create({
   },
   text1: {
     fontSize: 18,
+    color: 'black',
   },
   text2: {
     marginLeft: 20,
     fontSize: 18,
+    color: 'black',
+
   },
 });
 

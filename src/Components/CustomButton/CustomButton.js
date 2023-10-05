@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   text_Tertiary: {
     fontSize: 14,
-    color: '#ff0066',
+    color: 'white',
   },
 });
 

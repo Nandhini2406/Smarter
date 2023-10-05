@@ -4,11 +4,18 @@ import React, { useState, useEffect } from 'react';
 import Navigator from './src/Navigation/Navigator';
 import { requestUserPermission, getFCMToken, notificationListner} from './src/Components/PushNotification/Pushnotification'
 import crashlytics from '@react-native-firebase/crashlytics';
-
+import SplashScreen from 'react-native-splash-screen'
+import { Platform, useColorScheme } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const App = () => {
 
+  const isDarkMode = useColorScheme() === 'dark';
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  }
   useEffect(() => {
+   
     requestUserPermission();
     getFCMToken();
     notificationListner();

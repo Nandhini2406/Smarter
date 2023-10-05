@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomButton from '../../../Components/CustomButton/CustomButton';
 import notifee from '@notifee/react-native';
 import analytics from '@react-native-firebase/analytics';
+import BackgroundImage from '../../../Components/BackgroundImage/BackgroundImage';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -51,7 +52,7 @@ const HomeScreen = () => {
       android: {
         channelId,
         smallIcon: 'ic_stat', // optional, defaults to 'ic_launcher'.
-        color: '#9c27b0',
+        color: '#0097df',
         // pressAction is needed if you want the notification to open the app when pressed
         pressAction: {
           id: 'default',
@@ -71,6 +72,7 @@ const HomeScreen = () => {
   //   };
 
   return (
+    <BackgroundImage>
     <View style={styles.root}>
       <Text style={styles.text}>Hello {name} !</Text>
       <View style={styles.menu}>
@@ -98,6 +100,7 @@ const HomeScreen = () => {
         />
       </View>
     </View>
+    </BackgroundImage>
   );
 };
 
@@ -109,7 +112,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   text: {
-    color: '#ff0066',
+    color: 'white',
     fontSize: 24,
     fontStyle: 'italic',
     fontWeight: 'bold',

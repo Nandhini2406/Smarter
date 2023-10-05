@@ -4,12 +4,12 @@ import {View, ImageBackground, StyleSheet, Dimensions} from 'react-native';
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
-const BackgroundImage = () => {
+const BackgroundImage = ({ children }) => {
   return (
     <ImageBackground
       source={require('../../Assets/Images/BgImg.png')}
       style={styles.img}>
-      <View style={styles.container}>{Children}</View>
+     {children}
     </ImageBackground>
   );
 };
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     // margin: 12,
     borderWidth: 2,
     padding: 10,
-    color: 'white',
+    //color: 'white',
     fontSize: 20,
   },
 });
