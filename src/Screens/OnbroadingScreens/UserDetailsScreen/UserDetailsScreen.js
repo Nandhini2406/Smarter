@@ -1,9 +1,10 @@
 import {View, Text, StyleSheet, Alert, ScrollView} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import CustomInput from '../../Components/CustomTextInput/CustomInput';
-import CustomButton from '../../Components/CustomButton/CustomButton';
+import CustomInput from '../../../Components/CustomTextInput/CustomInput';
+import CustomButton from '../../../Components/CustomButton/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
 
 const UserDetailsScreen = () => {
   const navigation = useNavigation();
@@ -83,7 +84,7 @@ const UserDetailsScreen = () => {
       console.log('User details saved successfully');
       Alert.alert('User details saved successfully');
       await AsyncStorage.setItem('savedEmail', email);
-      await AsyncStorage.setItem('userName', updatedUser.name)
+      await AsyncStorage.setItem('userName', updatedUser.name);
       navigation.navigate('BottomTabBar');
     } catch (error) {
       console.error('Error saving user data:', error);
@@ -91,6 +92,7 @@ const UserDetailsScreen = () => {
   };
 
   return (
+    <GradientBackground>
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.titleText}>Name:</Text>
@@ -127,7 +129,7 @@ const UserDetailsScreen = () => {
           setvalue={text => setEmail(text)}
           value={email}
           onBlur={validateEmail}
-          autoCapitalize='none'
+          autoCapitalize="none"
         />
         {emailError && <Text style={styles.errorMsg}>{emailError}</Text>}
 
@@ -140,21 +142,22 @@ const UserDetailsScreen = () => {
         <CustomButton text="Submit" onPress={SumbitBtnPressed}></CustomButton>
       </View>
     </ScrollView>
+    </GradientBackground>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-     marginTop: 40,
+    marginTop: 40,
     margin: 35,
     flex: 1,
     justifyContent: 'center',
     //alignItems: 'center',
-
   },
 
   titleText: {
     fontSize: 18,
+    color: 'white',
   },
   errorMsg: {
     fontSize: 10,

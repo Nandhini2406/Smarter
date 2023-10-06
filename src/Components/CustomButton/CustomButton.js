@@ -1,5 +1,6 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
+import { theme } from '../../Assets/colors/bgTheme';
 
 const CustomButton = ({onPress, text, type = 'Primary'}) => {
   return (
@@ -24,7 +25,8 @@ const styles = StyleSheet.create({
     //backgroundColor: 'transparent',
     borderRadius: 25,
     borderWidth: 1,
-    borderColor: 'white',
+    backgroundColor: theme.bgWhite(0.3),
+    borderColor: 'gray',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

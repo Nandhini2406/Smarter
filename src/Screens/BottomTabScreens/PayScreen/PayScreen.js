@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import {Keyboard, ScrollView, StyleSheet, Text, View} from 'react-native';
 import TaskItem from '../../../Components/TodoList/TaskItem';
 import TaskInputField from '../../../Components/TodoList/TaskInputField';
+import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
+import { theme } from '../../../Assets/colors/bgTheme';
+
 
 const PayScreen = () => {
   const [tasks, setTasks] = useState([]);
@@ -17,6 +20,7 @@ const PayScreen = () => {
   };
 
   return (
+    <GradientBackground> 
     <View style={styles.container}>
       <Text style={styles.heading}>TODO LIST</Text>
       <ScrollView style={styles.scrollView}>
@@ -34,6 +38,7 @@ const PayScreen = () => {
       </ScrollView>
       <TaskInputField addTask={addTask} />
     </View>
+    </GradientBackground>
   );
 };
 

@@ -9,7 +9,7 @@ import Notification from '../Screens/DrawerScreens/Notification';
 import Settings from '../Screens/DrawerScreens/Settings';
 import BottomTabBar from './BottomTabBar';
 import ProfileScreen from '../Screens/BottomTabScreens/Profilescreen/ProfileScreen';
-import LoginScreen from '../Screens/LoginScreen';
+import LoginScreen from '../Screens/OnbroadingScreens/LoginScreen';
 
 const Drawer = createDrawerNavigator();
 

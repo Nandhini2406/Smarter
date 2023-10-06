@@ -4,6 +4,8 @@ import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomButton from '../../../Components/CustomButton/CustomButton';
 import crashlytics from '@react-native-firebase/crashlytics';
+import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
+import { theme } from '../../../Assets/colors/bgTheme';
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
@@ -57,7 +59,9 @@ const ProfileScreen = () => {
   };
 
   return (
+    <GradientBackground>
     <View style={styles.root}>
+    <View style={styles.details}>
       <View style={styles.row}>
         <Text style={styles.text1}>Name: </Text>
         <Text style={styles.text2}>{name}</Text>
@@ -90,18 +94,28 @@ const ProfileScreen = () => {
           style={{alignItems: 'center'}}
         />
       </View>
+      </View>
     </View>
+    </GradientBackground>
   );
 };
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    margin: 20,
+   
+  },
+  details: {
+    backgroundColor: theme.bgWhite(0.3),
+    height: "50%",
+    borderRadius: 20,
+    margin: '10%',
+
   },
   row: {
     flexDirection: 'row',
     margin: 10,
+    
   },
   buttonView: {
     alignItems: 'center',

@@ -1,10 +1,11 @@
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import CustomInput from '../../Components/CustomTextInput/CustomInput';
-import CustomButton from '../../Components/CustomButton/CustomButton';
+import CustomInput from '../../../Components/CustomTextInput/CustomInput';
+import CustomButton from '../../../Components/CustomButton/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CheckBox from '@react-native-community/checkbox';
+import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
 
 const SignupScreen = () => {
   const navigation = useNavigation();
@@ -99,6 +100,7 @@ const SignupScreen = () => {
   };
 
   return (
+  <GradientBackground>
     <ScrollView style={{flex: 1}}>
       <View style={styles.root}>
         <Text style={styles.title}>Sign Up Here!</Text>
@@ -162,6 +164,7 @@ const SignupScreen = () => {
         {error && <Text style={styles.errorMsg}>{error}</Text>}
       </View>
     </ScrollView>
+    </GradientBackground>
   );
 };
 
@@ -174,7 +177,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#ff0066',
+    color: 'white',
     marginBottom: 20,
   },
   errorMsg: {

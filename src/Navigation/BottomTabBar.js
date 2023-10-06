@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import {theme} from '../Assets/colors/bgTheme';
 //Bottom TabBar Screens
 import HomeScreen from '../Screens/BottomTabScreens/HomeScreen/HomeScreen';
 import PayScreen from '../Screens/BottomTabScreens/PayScreen/PayScreen';
@@ -14,11 +14,18 @@ const BottomTabBar = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
-        tabBarActiveTintColor: '#ff0066',
-        tabBarInactiveTintColor: 'grey',
-        tabBarStyle: {height: 60, padding: 10},
-        //headerShown: false,
-        tabBarLabelStyle: {fontSize: 14, paddingBottom: 5, fontWeight: 'bold'},
+        tabBarActiveTintColor: 'skyblue',
+        tabBarInactiveTintColor: 'white',
+        tabBarStyle: {
+          height: 60,
+          backgroundColor: theme.bgWhite(0.3),
+          position: 'absolute',
+        },
+        headerShown: false,
+        tabBarActiveBackgroundColor: 'white',
+        tabBarItemStyle: {height: 50, padding: 3, borderRadius: 50},
+
+        tabBarLabelStyle: {fontSize: 14, fontWeight: 'bold'},
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
           if (route.name === 'HomeScreen') {

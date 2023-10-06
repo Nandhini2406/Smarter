@@ -11,12 +11,13 @@ import com.facebook.react.defaults.DefaultReactActivityDelegate;
 //import io.invertase.firebase.crashlytics.ReactNativeFirebaseCrashlyticsNativeHelper;
 //import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
 
 public class MainActivity extends ReactActivity {
 
   @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SplashScreen.show(this);  // here
+        SplashScreen.show(this);  
         super.onCreate(savedInstanceState);
     }
 
@@ -43,5 +44,12 @@ public class MainActivity extends ReactActivity {
         DefaultNewArchitectureEntryPoint.getFabricEnabled());  
   }
 
-
+@Override
+  protected List<ReactPackage> getPackages() {
+    return Arrays.<ReactPackage>asList(
+        new MainReactPackage(),
+        new SplashScreenReactPackage(),
+        new LinearGradientPackage() 
+    );
+  }
 }

@@ -4,11 +4,11 @@ import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import WelcomeScreen from '../Screens/WelcomeScreen/WelcomeScreen';
-import SignupScreen from '../Screens/SignupScreen/SignupScreen';
-import UserDetailsScreen from '../Screens/UserDetailsScreen/UserDetailsScreen';
-import LoginScreen from '../Screens/LoginScreen/LoginScreen';
-import SetPassword from '../Screens/SetPassword/SetPassword';
+import WelcomeScreen from '../Screens/OnbroadingScreens/WelcomeScreen/WelcomeScreen';
+import SignupScreen from '../Screens/OnbroadingScreens/SignupScreen/SignupScreen';
+import UserDetailsScreen from '../Screens/OnbroadingScreens/UserDetailsScreen/UserDetailsScreen';
+import LoginScreen from '../Screens/OnbroadingScreens/LoginScreen/LoginScreen';
+import SetPassword from '../Screens/OnbroadingScreens/SetPassword/SetPassword';
 import BottomTabBar from './BottomTabBar';
 import DrawerNavigation from './DrawerNavigation';
 
@@ -80,7 +80,7 @@ const Navigator = () => {
   }
 
   return (
-    <NavigationContainer linking={linking} fallback={<Text>Loading...</Text>}  >
+    <NavigationContainer linking={linking} fallback={<Text>Loading...</Text>}>
       <Stack.Navigator
         initialRouteName={authenticated ? 'BottomTabBar' : 'WelcomeScreen'}
         // headerMode="none" // Remove the header to make room for Drawer

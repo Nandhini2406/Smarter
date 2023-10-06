@@ -2,8 +2,9 @@ import {View, Text, StyleSheet, Alert} from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import CustomButton from '../../Components/CustomButton/CustomButton';
-import CustomInput from '../../Components/CustomTextInput/CustomInput';
+import CustomButton from '../../../Components/CustomButton/CustomButton';
+import CustomInput from '../../../Components/CustomTextInput/CustomInput';
+import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
 
 const SetPassword = () => {
   const navigation = useNavigation();
@@ -64,13 +65,14 @@ const SetPassword = () => {
   };
 
   return (
+    <GradientBackground>
     <View style={styles.container}>
       <Text>Enter the Email ID</Text>
       <CustomInput
         placeholder="Email Id"
         setvalue={text => setEmail(text)}
         value={email}
-        autoCapitalize='none'
+        autoCapitalize="none"
       />
       <CustomButton
         text="Reset Password now"
@@ -100,6 +102,7 @@ const SetPassword = () => {
         type="Tertiary"
       />
     </View>
+    </GradientBackground>
   );
 };
 

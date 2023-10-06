@@ -1,5 +1,5 @@
-import React, {Children} from 'react';
-import {View, ImageBackground, StyleSheet, Dimensions} from 'react-native';
+import React from 'react';
+import {ImageBackground, StyleSheet, Dimensions, } from 'react-native';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
@@ -7,7 +7,7 @@ const screenWidth = Dimensions.get('window').width;
 const BackgroundImage = ({ children }) => {
   return (
     <ImageBackground
-      source={require('../../Assets/Images/BgImg.png')}
+      source={require('../../Assets/Images/bg7.jpeg')}
       style={styles.img}>
      {children}
     </ImageBackground>
