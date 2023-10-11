@@ -1,44 +1,42 @@
 import 'react-native-gesture-handler';
 import 'react-native-reanimated';
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import Navigator from './src/Navigation/Navigator';
-import { requestUserPermission, getFCMToken, notificationListner} from './src/Components/PushNotification/Pushnotification'
+import {
+  requestUserPermission,
+  getFCMToken,
+  notificationListner,
+} from './src/Components/PushNotification/Pushnotification';
 import crashlytics from '@react-native-firebase/crashlytics';
-import SplashScreen from 'react-native-splash-screen'
-import { Platform, useColorScheme } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import SplashScreen from 'react-native-splash-screen';
+import {Platform, useColorScheme} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+
+import { Provider } from 'react-redux';
+import store from './src/Redux/store/store';
 
 const App = () => {
-
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  }
+  };
   useEffect(() => {
-   
+    SplashScreen.hide();
+
     requestUserPermission();
     getFCMToken();
     notificationListner();
-    console.log('Hello world')
+    console.log('Hello world');
   }, []);
 
   return (
-    <>
-    <Navigator />
-    {/* <BackgroundImg></BackgroundImg> */}
- </>
+    <Provider store={store}>
+      <Navigator />
+    </Provider>
   );
 };
 
-
-
 export default App;
-
-
-
-
-
-
 
 // type SectionProps = PropsWithChildren<{
 //   title: string;

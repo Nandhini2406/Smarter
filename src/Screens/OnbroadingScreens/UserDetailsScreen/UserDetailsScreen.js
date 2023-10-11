@@ -1,10 +1,11 @@
-import {View, Text, StyleSheet, Alert, ScrollView} from 'react-native';
+import {View, Text, Alert, ScrollView} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import CustomInput from '../../../Components/CustomTextInput/CustomInput';
 import CustomButton from '../../../Components/CustomButton/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
+import {styles} from './styles';
 
 const UserDetailsScreen = () => {
   const navigation = useNavigation();
@@ -92,81 +93,61 @@ const UserDetailsScreen = () => {
   };
 
   return (
-    <GradientBackground>
     <ScrollView>
-      <View style={styles.container}>
-        <Text style={styles.titleText}>Name:</Text>
-        <CustomInput
-          placeholder="Name"
-          setvalue={text => setName(text)}
-          value={name}
-        />
-        <Text style={styles.titleText}>Phone Number:</Text>
-        <CustomInput
-          placeholder="Phone Number"
-          setvalue={text => setPhoneNumber(text)}
-          value={phoneNumber}
-          keyboardType={'phone-pad'}
-          onBlur={validatePhoneNumber}
-        />
-        {phoneNoError && <Text style={styles.errorMsg}>{phoneNoError}</Text>}
+      <GradientBackground>
+        <View style={styles.container}>
+          <Text style={styles.title}>Profile Details</Text>
+          <Text style={styles.titleText}>Name:</Text>
+          <CustomInput
+            placeholder="Name"
+            setvalue={text => setName(text)}
+            value={name}
+          />
+          <Text style={styles.titleText}>Phone Number:</Text>
+          <CustomInput
+            placeholder="Phone Number"
+            setvalue={text => setPhoneNumber(text)}
+            value={phoneNumber}
+            keyboardType="phone-pad"
+            onBlur={validatePhoneNumber}
+          />
+          {phoneNoError && <Text style={styles.errorMsg}>{phoneNoError}</Text>}
 
-        <Text style={styles.titleText}>Address:</Text>
-        <CustomInput
-          placeholder="Address"
-          setvalue={text => setAddress(text)}
-          value={address}
-        />
-        <Text style={styles.titleText}>Location:</Text>
-        <CustomInput
-          placeholder="Location"
-          setvalue={text => setLocation(text)}
-          value={location}
-        />
-        <Text style={styles.titleText}>Email ID:</Text>
-        <CustomInput
-          placeholder="Email ID"
-          setvalue={text => setEmail(text)}
-          value={email}
-          onBlur={validateEmail}
-          autoCapitalize="none"
-        />
-        {emailError && <Text style={styles.errorMsg}>{emailError}</Text>}
+          <Text style={styles.titleText}>Address:</Text>
+          <CustomInput
+            placeholder="Address"
+            setvalue={text => setAddress(text)}
+            value={address}
+          />
+          <Text style={styles.titleText}>Location:</Text>
+          <CustomInput
+            placeholder="Location"
+            setvalue={text => setLocation(text)}
+            value={location}
+          />
+          <Text style={styles.titleText}>Email ID:</Text>
+          <CustomInput
+            placeholder="Email ID"
+            setvalue={text => setEmail(text)}
+            value={email}
+            onBlur={validateEmail}
+            autoCapitalize="none"
+          />
+          {emailError && <Text style={styles.errorMsg}>{emailError}</Text>}
 
-        <Text style={styles.titleText}>Company:</Text>
-        <CustomInput
-          placeholder="Company Name"
-          setvalue={text => setCompany(text)}
-          value={company}
-        />
-        <CustomButton text="Submit" onPress={SumbitBtnPressed}></CustomButton>
-      </View>
+          <Text style={styles.titleText}>Company:</Text>
+          <CustomInput
+            placeholder="Company Name"
+            setvalue={text => setCompany(text)}
+            value={company}
+          />
+          {error && <Text style={styles.errorMsg}>{error}</Text>}
+          <CustomButton text="Submit" onPress={SumbitBtnPressed}></CustomButton>
+        </View>
+      </GradientBackground>
     </ScrollView>
-    </GradientBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 40,
-    margin: 35,
-    flex: 1,
-    justifyContent: 'center',
-    //alignItems: 'center',
-  },
-
-  titleText: {
-    fontSize: 18,
-    color: 'white',
-  },
-  errorMsg: {
-    fontSize: 10,
-    color: 'red',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-    textAlign: 'right',
-  },
-});
 
 export default UserDetailsScreen;
 

@@ -1,20 +1,22 @@
+import React, {useState} from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   Alert,
   TextInput,
   Image,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
-import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import CustomInput from '../../../Components/CustomTextInput/CustomInput';
 import CustomButton from '../../../Components/CustomButton/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
-import {theme} from '../../../Assets/colors/bgTheme';
+// import {ScrollView} from 'react-native-gesture-handler';
+import {styles} from './styles';
+
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
@@ -72,85 +74,51 @@ const LoginScreen = () => {
   };
 
   return (
-    <GradientBackground>
-      <View style={styles.root}>
-        <Image
-          source={require('../../Assets/Images/Revenue-amico.png')}
-          style={{height: 200, width: 200}}
-        />
-        <Text style={styles.greet}>Welcome Back!</Text>
-        <CustomInput
-          placeholder="Email Address"
-          setvalue={text => setEmail(text)}
-          value={email}
-          autoCapitalize="none"
-        />
-        <View style={styles.password}>
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            secureTextEntry={!viewPassword}
-            onChangeText={text => setPassword(text)}
-            value={password}
+    <ScrollView>
+      <GradientBackground>
+        <View style={styles.root}>
+          <Text style={styles.greet}>Login</Text>
+          <Image
+            source={require('../../../Assets/Images/Settings.png')}
+            style={{height: '25%', width: '50%'}}
           />
-          <TouchableOpacity
-            style={{position: 'absolute', right: 12}}
-            onPress={toggleShowPassword}>
-            <FontAwesome
-              name={viewPassword ? 'eye' : 'eye-slash'}
-              size={28}
-              color="white"
-              style={{padding: 7}}
+          <CustomInput
+            placeholder="Email Address"
+            setvalue={text => setEmail(text)}
+            value={email}
+            autoCapitalize="none"
+          />
+          <View style={styles.password}>
+            <TextInput
+              style={styles.input}
+              placeholder="Password"
+              secureTextEntry={!viewPassword}
+              onChangeText={text => setPassword(text)}
+              value={password}
             />
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={{position: 'absolute', right: 12}}
+              onPress={toggleShowPassword}>
+              <FontAwesome
+                name={viewPassword ? 'eye' : 'eye-slash'}
+                size={28}
+                color="white"
+                style={{padding: 9}}
+              />
+            </TouchableOpacity>
+          </View>
+          {loginError && <Text style={styles.errorMsg}>{loginError}</Text>}
+          <CustomButton text="Login" onPress={loginBtnPressed} />
+          <CustomButton text="Sign up" onPress={signupBtnPressed} />
+          <CustomButton
+            text="Forgot Password?"
+            type="Tertiary"
+            onPress={forgotPasswordBtnPressed}
+          />
         </View>
-        {loginError && <Text style={styles.errorMsg}>{loginError}</Text>}
-        <CustomButton text="Login" onPress={loginBtnPressed} />
-        <CustomButton text="Sign up" onPress={signupBtnPressed} />
-        <CustomButton
-          text="Forgot Password?"
-          type="Tertiary"
-          onPress={forgotPasswordBtnPressed}
-        />
-      </View>
-    </GradientBackground>
+      </GradientBackground>
+    </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  greet: {
-    fontWeight: 'bold',
-    fontSize: 25,
-    color: 'white',
-  },
-  errorMsg: {
-    fontSize: 10,
-    color: 'red',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-    textAlign: 'right',
-  },
-  password: {
-    flexDirection: 'row',
-    height: 50,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 15,
-    width: 300,
-    margin: 10,
-  },
-  input: {
-    padding: 10,
-    width: '100%',
-    backgroundColor: theme.bgWhite(0.1),
-    borderRadius: 15,
-    color: 'white',
-  },
-});
 
 export default LoginScreen;

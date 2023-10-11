@@ -10,6 +10,7 @@ import UserDetailsScreen from '../Screens/OnbroadingScreens/UserDetailsScreen/Us
 import LoginScreen from '../Screens/OnbroadingScreens/LoginScreen/LoginScreen';
 import SetPassword from '../Screens/OnbroadingScreens/SetPassword/SetPassword';
 import BottomTabBar from './BottomTabBar';
+import TodoScreen from '../Screens/BottomTabScreens/TodoScreen/TodoScreen';
 import DrawerNavigation from './DrawerNavigation';
 
 import {Linking} from 'react-native';
@@ -114,6 +115,11 @@ const Navigator = () => {
           name="BottomTabBar"
           component={DrawerNavigation} // Use DrawerNavigation as a screen
           options={{title: '', headerShown: false}}
+        />
+        <Stack.Screen
+          name="TodoScreen"
+          component={TodoScreen}
+          options={{title: 'Todo'}}
         />
         {/* <Stack.Screen
           name="DrawerNavigator"

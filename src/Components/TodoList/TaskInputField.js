@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     position: 'absolute',
     bottom: 20,
+    marginBottom: 100,
   },
   inputField: {
     color: '#fff',

@@ -18,7 +18,7 @@ const BottomTabBar = () => {
         tabBarInactiveTintColor: 'white',
         tabBarStyle: {
           height: 60,
-          backgroundColor: theme.bgWhite(0.3),
+          backgroundColor: 'transparent',
           position: 'absolute',
         },
         headerShown: false,

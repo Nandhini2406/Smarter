@@ -9,14 +9,14 @@ import Notification from '../Screens/DrawerScreens/Notification';
 import Settings from '../Screens/DrawerScreens/Settings';
 import BottomTabBar from './BottomTabBar';
 import ProfileScreen from '../Screens/BottomTabScreens/Profilescreen/ProfileScreen';
-import LoginScreen from '../Screens/OnbroadingScreens/LoginScreen';
+import LoginScreen from '../Screens/OnbroadingScreens/LoginScreen/LoginScreen';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigation = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="Home"
+      initialRouteName="BottomTabBar"
       article
       receipt-long
       screenOptions={{
@@ -30,7 +30,7 @@ const DrawerNavigation = () => {
         drawerItemStyle: {borderRadius: 30},
       }}>
       <Drawer.Screen
-        name="Home"
+        name="BottomTabBar"
         component={BottomTabBar} // You can use BottomTabBar as the home screen
         options={{
           title: 'Smarter',
