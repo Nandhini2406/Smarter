@@ -11,6 +11,7 @@ import LoginScreen from '../Screens/OnbroadingScreens/LoginScreen/LoginScreen';
 import SetPassword from '../Screens/OnbroadingScreens/SetPassword/SetPassword';
 import BottomTabBar from './BottomTabBar';
 import TodoScreen from '../Screens/BottomTabScreens/TodoScreen/TodoScreen';
+import ProductsScreen from '../Screens/BottomTabScreens/ProductsScreen/ProductsScreen';
 import DrawerNavigation from './DrawerNavigation';
 
 import {Linking} from 'react-native';
@@ -120,6 +121,11 @@ const Navigator = () => {
           name="TodoScreen"
           component={TodoScreen}
           options={{title: 'Todo'}}
+        />
+        <Stack.Screen
+          name="ProductsScreen"
+          component={ProductsScreen}
+          options={{title: 'Product Details'}}
         />
         {/* <Stack.Screen
           name="DrawerNavigator"

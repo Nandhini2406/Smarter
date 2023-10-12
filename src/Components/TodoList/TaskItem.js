@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   indexContainer: {
     backgroundColor: '#ff0066',
     borderRadius: 12,
-    marginRight: 10,
+    marginRight: '3%',
     alignItems: 'center',
     justifyContent: 'center',
     width: 50,
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   taskContainer: {
-    // backgroundColor: '#3E3364',
+     //backgroundColor: '#3E3364',
     backgroundColor: '#ff0066',
     borderRadius: 12,
     flexDirection: 'row',
@@ -50,12 +50,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     paddingHorizontal: 10,
-    paddingVertical: 5,
-    minHeight: 50,
+   // paddingVertical: 5,
+    //minHeight: 50,
   },
   task: {
     color: '#fff',
-    width: '90%',
+   // width: '90%',
     fontSize: 16,
     fontWeight: 'bold',
   },

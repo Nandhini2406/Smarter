@@ -14,18 +14,31 @@ const BottomTabBar = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
-        tabBarActiveTintColor: 'skyblue',
+        tabBarActiveTintColor: 'royalblue',
         tabBarInactiveTintColor: 'white',
-        tabBarStyle: {
-          height: 60,
-          backgroundColor: 'transparent',
-          position: 'absolute',
-        },
+        tabBarActiveBackgroundColor: theme.bgWhite(0.5),
         headerShown: false,
-        tabBarActiveBackgroundColor: 'white',
-        tabBarItemStyle: {height: 50, padding: 3, borderRadius: 50},
-
-        tabBarLabelStyle: {fontSize: 14, fontWeight: 'bold'},
+        tabBarStyle: {
+          backgroundColor: '#81d4fd',
+          marginBottom: -10,
+          borderTopEndRadius: 25,
+          borderTopStartRadius: 25,
+          marginHorizontal: 10,
+          height: 60,
+          position: 'absolute',
+          elevation: 0,
+        },
+        tabBarItemStyle: {
+          height: 50,
+          padding: 3,
+          borderTopStartRadius: 25,
+          borderTopEndRadius: 25,
+         // backgroundColor: 'white'
+        },
+        tabBarLabelStyle: {
+          fontSize: 14,
+          fontWeight: 'bold',
+        },
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
           if (route.name === 'HomeScreen') {

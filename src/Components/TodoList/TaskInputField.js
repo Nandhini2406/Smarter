@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-// import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default TaskInputField = props => {
   const [task, setTask] = useState();
@@ -25,7 +24,7 @@ export default TaskInputField = props => {
         style={styles.inputField}
         value={task}
         onChangeText={text => setTask(text)}
-        placeholder={'Write a task'}
+        placeholder={'Add your task'}
         placeholderTextColor={'#fff'}
       />
       <TouchableOpacity onPress={() => handleAddTask(task)}>
@@ -42,15 +41,14 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
     backgroundColor: '#ff0066',
     borderWidth: 1,
-    marginHorizontal: 20,
+    marginHorizontal: '5%',
     borderRadius: 12,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 10,
     position: 'absolute',
-    bottom: 20,
-    marginBottom: 100,
+    bottom: '5%',
   },
   inputField: {
     color: '#fff',

@@ -12,8 +12,9 @@ import SplashScreen from 'react-native-splash-screen';
 import {Platform, useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import { Provider } from 'react-redux';
-import store from './src/Redux/store/store';
+import {PersistGate} from 'redux-persist/integration/react';
+import {Provider} from 'react-redux';
+import store, {persistor} from './src/Redux/store/store';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -31,7 +32,9 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <Navigator />
+      <PersistGate loading={null} persistor={persistor}>
+        <Navigator />
+      </PersistGate>
     </Provider>
   );
 };

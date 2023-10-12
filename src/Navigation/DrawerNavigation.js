@@ -22,6 +22,7 @@ const DrawerNavigation = () => {
       screenOptions={{
         drawerStyle: {
           width: 250,
+          //backgroundColor: 'white',
         },
         //drawerLabelStyle:{ marginLeft: 20},
         drawerActiveBackgroundColor: '#ff0066',

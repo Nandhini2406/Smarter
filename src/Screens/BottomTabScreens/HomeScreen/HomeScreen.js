@@ -68,6 +68,9 @@ const HomeScreen = () => {
   const handleTodoList = () => {
     navigation.navigate('TodoScreen');
   };
+  const handleProducts = () => {
+    navigation.navigate('ProductsScreen');
+  };
 
   // const retrieveData = async () => {
   //   try {
@@ -84,12 +87,20 @@ const HomeScreen = () => {
       <GradientBackground>
         <View style={styles.root}>
           <Text style={styles.greet}>Hello {name} !</Text>
+          <View style={{flexDirection: 'row', margin: '10%',}}>
           <TouchableOpacity onPress={handleTodoList}>
             <View style={styles.todo}>
               <Icon name="checklist" size={50} color="white" />
               <Text style={styles.text}> ToDo List </Text>
             </View>
           </TouchableOpacity>
+          <TouchableOpacity onPress={handleProducts}>
+            <View style={styles.todo}>
+              <Icon name="shop" size={50} color="white" />
+              <Text style={styles.text}> Products</Text>
+            </View>
+          </TouchableOpacity>
+          </View>
           <View style={styles.menu}>
             <CustomButton
               text="Test Crash"
