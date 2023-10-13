@@ -1,16 +1,25 @@
-import React from 'react';
+import React,{ useState} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export default TaskItem = props => {
+  const [completed, setCompleted] = useState(false);
+
+  const handleClick = () => {
+    setCompleted(!completed);
+    console.log('TaskItem clicked');
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.indexContainer}>
         <Text style={styles.index}>{props.index}</Text>
       </View>
       <View style={styles.taskContainer}>
-        <Text style={styles.task}>{props.task}</Text>
-        <TouchableOpacity onPress={() => props.deleteTask()}>
+      <TouchableOpacity onPress={handleClick}>
+        <Text style={completed? styles.strikethrough : styles.taskText}>{props.task}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => props.deleteTask(props.id)}>
           <MaterialIcons
             style={styles.delete}
             name="delete"
@@ -53,11 +62,17 @@ const styles = StyleSheet.create({
    // paddingVertical: 5,
     //minHeight: 50,
   },
-  task: {
+  taskText: {
     color: '#fff',
    // width: '90%',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  strikethrough: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textDecorationLine: 'line-through',
   },
   delete: {
     marginRight: 10,

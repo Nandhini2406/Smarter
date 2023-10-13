@@ -14,7 +14,11 @@ const initialState = {
           ...state,
           todos: state.todos.filter(todo => todo.id !== action.payload),
         };
-      // Add cases for other actions (e.g., UPDATE_TODO) if needed
+      // case 'UPDATE_TODO':
+      //   return {
+      //     ...state,
+      //     todos: state.todos.filter(todo => todo.id !== action.payload),
+      //   };
       default:
         return state;
     }

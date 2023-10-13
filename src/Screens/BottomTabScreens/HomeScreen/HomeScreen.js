@@ -96,7 +96,7 @@ const HomeScreen = () => {
           </TouchableOpacity>
           <TouchableOpacity onPress={handleProducts}>
             <View style={styles.todo}>
-              <Icon name="shop" size={50} color="white" />
+              <Icon name="shop-2" size={50} color="white" />
               <Text style={styles.text}> Products</Text>
             </View>
           </TouchableOpacity>
