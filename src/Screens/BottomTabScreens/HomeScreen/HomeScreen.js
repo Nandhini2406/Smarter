@@ -9,31 +9,40 @@ import GradientBackground from '../../../Components/BackgroundImage/GradientBack
 import CustomButton from '../../../Components/CustomButton/CustomButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {styles} from './styles';
-import {theme} from '../../../Assets/colors/bgTheme';
+import { fetchUserData } from '../../../Services/asyncService/fetchUserData';
 
-const HomeScreen = () => {
+const HomeScreen = ({ route }) => {
+
+  // const {userName} = route.params;
+  // console.log('userName', userName);
   const navigation = useNavigation();
   const [name, setName] = useState('');
-  console.log('HomeScreen');
+const [userData, setUserData] = useState({});
 
+  // const getUserName = async () => {
+  //   try {
+  //     const savedName = await AsyncStorage.getItem('userName');
+  //     console.log(`Current UserName: ${savedName}`);
+  //     const allKeys = await AsyncStorage.getAllKeys();
+  //     console.log(`All keys...: ${allKeys}`);
+
+  //     if (savedName) {
+  //       setName(savedName);
+  //     }
+  //   } catch (error) {
+  //     // Error retrieving data
+  //     console.log('error' + error);
+  //   }
+  // };
+  
+  const loadUserData = async () => {
+    const user = await fetchUserData();
+    setUserData(user);
+  };
   useEffect(() => {
-    const getUserName = async () => {
-      try {
-        const savedName = await AsyncStorage.getItem('userName');
-        console.log(`Current UserName: ${savedName}`);
-        const allKeys = await AsyncStorage.getAllKeys();
-        console.log(`All keys...: ${allKeys}`);
-
-        if (savedName) {
-          setName(savedName);
-        }
-      } catch (error) {
-        // Error retrieving data
-        console.log('error' + error);
-      }
-    };
-    getUserName();
-  }, [name]);
+    // getUserName();
+    loadUserData();
+  }, []);
 
   const crashtBtnPressed = () => {
     throw new Error('Test Crash');
@@ -81,12 +90,11 @@ const HomeScreen = () => {
   //       console.log('error'+ error)
   //     }
   //   };
-
   return (
     <ScrollView>
       <GradientBackground>
         <View style={styles.root}>
-          <Text style={styles.greet}>Hello {name} !</Text>
+          <Text style={styles.greet}>Hello {userData.name} !</Text>
           <View style={{flexDirection: 'row', margin: '10%',}}>
           <TouchableOpacity onPress={handleTodoList}>
             <View style={styles.todo}>

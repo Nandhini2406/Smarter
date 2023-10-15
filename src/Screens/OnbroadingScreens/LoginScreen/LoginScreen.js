@@ -14,8 +14,9 @@ import CustomButton from '../../../Components/CustomButton/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
-// import {ScrollView} from 'react-native-gesture-handler';
 import {styles} from './styles';
+
+import {authenticateUser} from '../../../Services/asyncService/Authentication';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -27,36 +28,18 @@ const LoginScreen = () => {
 
   const loginBtnPressed = async () => {
     try {
-      // Generate the user key based on the email
-      const userKey = `user_${email}`;
+      const result = await authenticateUser(email, password);
 
-      // Retrieve the user data using the user key
-      const userData = await AsyncStorage.getItem(userKey);
-
-      if (userData) {
-        const user = JSON.parse(userData);
-
-        if (user.password === password && user.email === email) {
-          //const userEmail = email;
-          await AsyncStorage.setItem('savedEmail', email);
-          console.log('savedEmail', email);
-          setLoginError(null);
-          console.log('Authentication successful');
-          Alert.alert('Authentication successful');
-          navigation.navigate('BottomTabBar');
-          let savedName = user.name;
-          await AsyncStorage.setItem('userName', savedName);
-          console.log(`savedName.... ${savedName}`);
-        } else {
-          setLoginError('Invalid email or password. Please try again.');
-          console.log('Try Again...Authentication failed');
-        }
-        // let savedName = user.name;
-        // await AsyncStorage.setItem('userName', savedName);
-        // console.log(`savedName.... ${savedName}`);
+      if (result.success) {
+        const user = result.user;
+        console.log('Authentication successful');
+        Alert.alert('Authentication successful');
+        navigation.navigate('BottomTabBar');
+        await AsyncStorage.setItem('userName', user.name);
+        console.log(`savedName.... ${user.name}`);
       } else {
-        setLoginError('User not found.');
-        console.log('Authentication failed...User not found');
+        setLoginError(result.error);
+        console.log('Authentication failed:', result.error);
       }
     } catch (error) {
       console.error('Error in authentication:', error);

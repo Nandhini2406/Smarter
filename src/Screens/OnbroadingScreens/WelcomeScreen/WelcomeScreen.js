@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {View, Text, Image, Dimensions, SafeAreaView} from 'react-native';
+import {View, Text, Image, Dimensions} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Carousel from 'react-native-reanimated-carousel';
 import CustomButton from '../../../Components/CustomButton/CustomButton';
@@ -44,7 +44,26 @@ const WelcomeScreen = () => {
     },
   ];
 
+  const nextSlide = () => {
+    console.log("Next Button Pressed");
+    console.log(_carousel.current);
+    const newIndex = activeIndex + 1;
+    if (newIndex < data.length) {
+      _carousel.current.next(newIndex);
+      setActiveIndex(newIndex);
+    }
+  };
+
+  const skipToLastSlide = () => {
+    console.log("skip Button Pressed");
+    // console.log(_carousel.current.next());
+    _carousel.current.scrollTo(data.length - 1);
+    setActiveIndex(data.length - 1);
+  };
+
   const _renderItem = ({item, index}) => {
+    const isLastSlide = index === data.length - 1;
+
     return (
       <View style={styles.slide}>
         <Image source={item.image} style={styles.images} />
@@ -52,11 +71,24 @@ const WelcomeScreen = () => {
         <View style={{margin: '6%'}}>
           <Text style={styles.description}>{item.description}</Text>
         </View>
-        <CustomButton text="Get Started" onPress={SignupButtonPressed}  />
-        <View style={{flexDirection: 'row', margin: '2%'}}>
-            <Text style={styles.text}>Already have a Account?</Text>
-            <CustomButton text="Login" type="Tertiary" />
-          </View>
+        {isLastSlide ? (
+          <>
+            <CustomButton text="Get Started" onPress={SignupButtonPressed} />
+            <View style={{flexDirection: 'row', margin: '2%'}}>
+              <Text style={styles.text}>Already have a Account?</Text>
+              <CustomButton text="Login" type="Tertiary" onPress={loginButtonPressed}/>
+            </View>
+          </>
+        ) : (
+          <>
+            <CustomButton text="Next" onPress={nextSlide} />
+            <CustomButton
+              text="Skip"
+              type="Tertiary"
+              onPress={skipToLastSlide}
+            />
+          </>
+        )}
       </View>
     );
   };
@@ -65,7 +97,8 @@ const WelcomeScreen = () => {
     <GradientBackground>
       <View style={styles.container}>
         <Carousel
-          loop={true}
+        ref={_carousel}
+        loop={false}
           data={data}
           renderItem={_renderItem}
           width={width}

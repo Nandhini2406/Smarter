@@ -6,6 +6,7 @@ import CustomButton from '../../../Components/CustomButton/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
 import {styles} from './styles';
+import { fetchUserData } from '../../../Services/asyncService/fetchUserData';
 
 const UserDetailsScreen = () => {
   const navigation = useNavigation();
@@ -22,12 +23,8 @@ const UserDetailsScreen = () => {
 
   useEffect(() => {
     const getUserData = async () => {
-      try {
-        const savedEmail = await AsyncStorage.getItem('savedEmail');
-        const userKey = `user_${savedEmail}`;
-        console.log(`UserKey ... ${userKey}`);
-        const userData = await AsyncStorage.getItem(userKey);
-        const user = JSON.parse(userData);
+      const user = await fetchUserData();
+       // console.log(`UserKey ... ${userKey}`);
         console.log(`User_Name ${user.name}`);
         console.log(`User_PhoneNumber ${user.phoneNumber}`);
         console.log(`User_Email ${user.email}`);
@@ -35,9 +32,6 @@ const UserDetailsScreen = () => {
         setName(user.name || '');
         setPhoneNumber(user.phoneNumber || '');
         setEmail(user.email || '');
-      } catch {
-        console.error('Error retrieving user data:', error);
-      }
     };
     getUserData();
   }, []);

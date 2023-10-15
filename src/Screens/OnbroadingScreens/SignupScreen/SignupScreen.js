@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import CheckBox from '@react-native-community/checkbox';
 import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
 import {styles} from './styles';
+import {saveUserData} from '../../../Services/asyncService/saveUserData';
 
 const SignupScreen = () => {
   const navigation = useNavigation();
@@ -23,9 +24,7 @@ const SignupScreen = () => {
   const [error, setError] = useState(null);
 
   const validatePhoneNumber = () => {
-    // Phone No regex pattern
-    const phoneNoPattern = /^\d{10}$/;
-
+    const phoneNoPattern = /^\d{10}$/; // Phone No regex pattern
     if (!phoneNoPattern.test(phoneNo)) {
       setphoneNoError('Invalid ');
     } else {
@@ -36,7 +35,6 @@ const SignupScreen = () => {
   const validateEmail = () => {
     // Email regex pattern
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
     if (!emailPattern.test(email)) {
       setEmailError('Invalid email address*');
     } else {
@@ -45,11 +43,13 @@ const SignupScreen = () => {
   };
 
   const validatePassword = () => {
-    // Password regex pattern (at least 6 characters)
-    const passwordPattern = /^.{6,}$/;
-
+    // Password regex pattern
+    const passwordPattern =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (!passwordPattern.test(password)) {
-      setPasswordError('Password must be at least 6 characters*');
+      setError(
+        'Password must contain at least 8 characters, one lowercase letter, one uppercase letter, one number, and one special character',
+      );
     } else {
       setPasswordError(null);
     }
@@ -57,7 +57,7 @@ const SignupScreen = () => {
 
   const matchPassword = () => {
     if (password !== confirmPassword) {
-      setconfirmPasswordError('Password is not matching ');
+      setconfirmPasswordError('Password is not matching');
     } else {
       setconfirmPasswordError(null);
     }
@@ -70,11 +70,8 @@ const SignupScreen = () => {
       return;
     }
     try {
-      //unique key for each user based on their email
-      const userKey = `user_${email}`;
-
-      //user with the same email already exists error
-      const existingUser = await AsyncStorage.getItem(userKey);
+      const userKey = `user_${email}`; //unique key for each user based on their email
+      const existingUser = await AsyncStorage.getItem(userKey); //user with the same email already exists error
 
       if (existingUser) {
         setError('User with this email already exists.');
@@ -86,24 +83,19 @@ const SignupScreen = () => {
           email: email,
           password: password,
         };
-
-        // Store the user data with the unique key
-        await AsyncStorage.setItem(userKey, JSON.stringify(user));
+        await saveUserData(email, user);
         navigation.navigate('UserDetailsScreen');
-        await AsyncStorage.setItem('savedEmail', email);
-        console.log('Email....', email);
-        console.log(`User email : ${userKey}   User Data : ${user.password}`);
       }
     } catch (error) {
       setError('Failed to sign up. Please try again.');
       console.error('Error storing data:', error);
     }
-    
   };
+
   const loginButtonPressed = () => {
     navigation.navigate('LoginScreen');
   };
-  
+
   return (
     <ScrollView>
       <GradientBackground>
@@ -176,7 +168,11 @@ const SignupScreen = () => {
           {error && <Text style={styles.errorMsg}>{error}</Text>}
           <View style={{flexDirection: 'row', margin: '2%'}}>
             <Text style={styles.text}>Already have a Account?</Text>
-            <CustomButton text="Login" type="Tertiary" onPress={loginButtonPressed}/>
+            <CustomButton
+              text="Login"
+              type="Tertiary"
+              onPress={loginButtonPressed}
+            />
           </View>
         </View>
       </GradientBackground>

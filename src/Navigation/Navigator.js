@@ -1,77 +1,65 @@
-import {View, ActivityIndicator, Text, FlatListComponent} from 'react-native';
+import 'react-native-gesture-handler';
+import 'react-native-reanimated';
+
+import {View, ActivityIndicator, Text} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import WelcomeScreen from '../Screens/OnbroadingScreens/WelcomeScreen/WelcomeScreen';
 import SignupScreen from '../Screens/OnbroadingScreens/SignupScreen/SignupScreen';
 import UserDetailsScreen from '../Screens/OnbroadingScreens/UserDetailsScreen/UserDetailsScreen';
 import LoginScreen from '../Screens/OnbroadingScreens/LoginScreen/LoginScreen';
 import SetPassword from '../Screens/OnbroadingScreens/SetPassword/SetPassword';
-import BottomTabBar from './BottomTabBar';
+import DrawerNavigation from './DrawerNavigation';
 import TodoScreen from '../Screens/BottomTabScreens/TodoScreen/TodoScreen';
 import ProductsScreen from '../Screens/BottomTabScreens/ProductsScreen/ProductsScreen';
 import ProductDetailScreen from '../Screens/BottomTabScreens/ProductDetailScreen/ProductDetailScreen';
-import DrawerNavigation from './DrawerNavigation';
 
-import {Linking} from 'react-native';
+import { checkAuthentication } from '../Services/asyncService/Authentication';
 
 const Stack = createStackNavigator();
 
 const Navigator = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
-  // const navigation = useNavigation();
 
-  const linking = {
-    prefixes: ['https://smarterapp.com'],
-    config: {
-      initialRouteName: 'Home',
-      screens: {
-        Home: 'home',
-        LoginScreen: 'login',
-      },
-    },
-  };
+  // const linking = {
+  //   prefixes: ['https://smarterapp.com'],
+  //   config: {
+  //     initialRouteName: 'Home',
+  //     screens: {
+  //       Home: 'home',
+  //       LoginScreen: 'login',
+  //     },
+  //   },
+  // };
   useEffect(() => {
-    const checkAuthentication = async () => {
-      try {
-        const savedEmail = await AsyncStorage.getItem('savedEmail');
-        const userName = await AsyncStorage.getItem('userName');
-        const userKeys = await AsyncStorage.getAllKeys();
-        //await AsyncStorage.clear()
-        console.log(`User Keys in asyncStorage.... [${userKeys}]`);
-        console.log(`User email.... ${savedEmail}`);
-        console.log(`User Name.... ${userName}`);
-
-        if (savedEmail) {
-          // User is authenticated
-          setAuthenticated(true);
-        }
-      } catch (error) {
-        console.error('Error checking authentication:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    const handleUrl = async event => {
-      const url = event.url;
-      const route = url.replace(/.*?:\/\//g, '');
-
-      if (route === 'login') {
-        // navigation.navigate('LoginScreen');
-      }
-    };
-
+    // const handleUrl = async event => {
+    //   const url = event.url;
+    //   const route = url.replace(/.*?:\/\//g, '');
+    //   if (route === 'login') {
+    //      navigation.navigate('LoginScreen');
+    //   }
+    // };
     // Linking.addEventListener('url', handleUrl);
-    checkAuthentication();
-
     // Don't forget to clean up the event listener when the component unmounts
     // return () => {
     //   Linking.removeEventListener('url', handleUrl);
     // };
+    // linking={linking}
+
+    const checkAuth = async () => {
+      try {
+        const isAuthenticated = await checkAuthentication();
+        setAuthenticated(isAuthenticated);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    checkAuth();
+
   }, []);
 
   if (loading) {
@@ -83,7 +71,7 @@ const Navigator = () => {
   }
 
   return (
-    <NavigationContainer linking={linking} fallback={<Text>Loading...</Text>}>
+    <NavigationContainer fallback={<Text style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>Loading...</Text>}>
       <Stack.Navigator
         initialRouteName={authenticated ? 'BottomTabBar' : 'WelcomeScreen'}
         // headerMode="none" // Remove the header to make room for Drawer
