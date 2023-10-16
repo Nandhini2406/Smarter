@@ -1,46 +1,26 @@
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import notifee from '@notifee/react-native';
 import analytics from '@react-native-firebase/analytics';
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
 import CustomButton from '../../../Components/CustomButton/CustomButton';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import {styles} from './styles';
-import { fetchUserData } from '../../../Services/asyncService/fetchUserData';
+import {fetchUserData} from '../../../Services/asyncService/fetchUserData';
 
-const HomeScreen = ({ route }) => {
-
-  // const {userName} = route.params;
-  // console.log('userName', userName);
+const HomeScreen = ({route}) => {
   const navigation = useNavigation();
-  const [name, setName] = useState('');
-const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState({});
 
-  // const getUserName = async () => {
-  //   try {
-  //     const savedName = await AsyncStorage.getItem('userName');
-  //     console.log(`Current UserName: ${savedName}`);
-  //     const allKeys = await AsyncStorage.getAllKeys();
-  //     console.log(`All keys...: ${allKeys}`);
-
-  //     if (savedName) {
-  //       setName(savedName);
-  //     }
-  //   } catch (error) {
-  //     // Error retrieving data
-  //     console.log('error' + error);
-  //   }
-  // };
-  
   const loadUserData = async () => {
     const user = await fetchUserData();
+    console.log(`Current user name ${user.name}`);
     setUserData(user);
   };
+
   useEffect(() => {
-    // getUserName();
     loadUserData();
   }, []);
 
@@ -81,33 +61,24 @@ const [userData, setUserData] = useState({});
     navigation.navigate('ProductsScreen');
   };
 
-  // const retrieveData = async () => {
-  //   try {
-  //     const value = await AsyncStorage.getItem();
-  //       console.log(value)
-  //     } catch (error) {
-  //       // Error retrieving data
-  //       console.log('error'+ error)
-  //     }
-  //   };
   return (
     <ScrollView>
       <GradientBackground>
         <View style={styles.root}>
           <Text style={styles.greet}>Hello {userData.name} !</Text>
-          <View style={{flexDirection: 'row', margin: '10%',}}>
-          <TouchableOpacity onPress={handleTodoList}>
-            <View style={styles.todo}>
-              <Icon name="checklist" size={50} color="white" />
-              <Text style={styles.text}> ToDo List </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={handleProducts}>
-            <View style={styles.todo}>
-              <Icon name="shop-2" size={50} color="white" />
-              <Text style={styles.text}> Products</Text>
-            </View>
-          </TouchableOpacity>
+          <View style={{flexDirection: 'row', margin: '10%'}}>
+            <TouchableOpacity onPress={handleTodoList}>
+              <View style={styles.todo}>
+                <Icon name="checklist" size={50} color="white" />
+                <Text style={styles.text}> ToDo List </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={handleProducts}>
+              <View style={styles.todo}>
+                <Icon name="shop-2" size={50} color="white" />
+                <Text style={styles.text}> Products</Text>
+              </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.menu}>
             <CustomButton

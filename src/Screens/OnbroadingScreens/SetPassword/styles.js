@@ -21,8 +21,10 @@ export const styles = StyleSheet.create({
     marginTop: '5%',
   },
   errorMsg: {
-    fontSize: 12,
+    fontSize: 15,
     color: 'red',
-    marginBottom: 10,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginHorizontal: '10%',
   },
 });

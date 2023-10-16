@@ -126,6 +126,7 @@ dependencies {
     //Splash screen
     implementation project(':react-native-splash-screen')
     
+    implementation project(':react-native-linear-gradient')
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
     debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {

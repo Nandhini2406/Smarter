@@ -15,15 +15,13 @@ const BottomTabBar = () => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarActiveTintColor: 'royalblue',
-        tabBarInactiveTintColor: 'white',
+        tabBarInactiveTintColor: '#81d4fdwhite',
         tabBarActiveBackgroundColor: theme.bgWhite(0.5),
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: '#81d4fd',
+          // backgroundColor: '#81d4fd',
+          backgroundColor: 'transparent',
           marginBottom: -10,
-          borderTopEndRadius: 25,
-          borderTopStartRadius: 25,
-          marginHorizontal: 10,
           height: 60,
           position: 'absolute',
           elevation: 0,
@@ -31,8 +29,8 @@ const BottomTabBar = () => {
         tabBarItemStyle: {
           height: 50,
           padding: 3,
-          borderTopStartRadius: 25,
-          borderTopEndRadius: 25,
+          // borderTopStartRadius: 25,
+          // borderTopEndRadius: 25,
          // backgroundColor: 'white'
         },
         tabBarLabelStyle: {

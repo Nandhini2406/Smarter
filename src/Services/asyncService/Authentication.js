@@ -5,7 +5,7 @@ export const checkAuthentication = async () => {
     const savedEmail = await AsyncStorage.getItem('savedEmail');
     const userName = await AsyncStorage.getItem('userName');
     const userKeys = await AsyncStorage.getAllKeys();
-    console.log(`User Keys in asyncStorage.... [${userKeys}]`);
+    console.log(`Keys in asyncStorage.... [${userKeys}]`);
     console.log(`User email.... ${savedEmail}`);
     console.log(`User Name.... ${userName}`);
     return !!savedEmail; // Return true if email is found, false otherwise
@@ -19,10 +19,10 @@ export const authenticateUser = async (email, password) => {
   try {
     const userKey = `user_${email}`;
     const userData = await AsyncStorage.getItem(userKey);
+    console.log(`Authenticated User Details.... ${userData}`);
 
     if (userData) {
       const user = JSON.parse(userData);
-
       if (user.password === password && user.email === email) {
         await AsyncStorage.setItem('savedEmail', email);
         return { success: true, user: user };
@@ -33,6 +33,7 @@ export const authenticateUser = async (email, password) => {
       return { success: false, error: 'User not found' };
     }
   } catch (error) {
+    console.log('Authentication failed: ', error);
     return { success: false, error: 'Error in authentication' };
   }
 };

@@ -1,7 +1,7 @@
 import React,{ useState} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
+import { theme } from '../../Assets/colors/bgTheme';
 export default TaskItem = props => {
   const [completed, setCompleted] = useState(false);
 
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   indexContainer: {
-    backgroundColor: '#ff0066',
+    backgroundColor: theme.bgWhite(0.3),
     borderRadius: 12,
     marginRight: '3%',
     alignItems: 'center',
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   taskContainer: {
      //backgroundColor: '#3E3364',
-    backgroundColor: '#ff0066',
+    backgroundColor: theme.bgWhite(0.3),
     borderRadius: 12,
     flexDirection: 'row',
     justifyContent: 'space-between',

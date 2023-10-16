@@ -22,18 +22,17 @@ const DrawerNavigation = () => {
       screenOptions={{
         drawerStyle: {
           width: 250,
-          //backgroundColor: 'white',
         },
-        //drawerLabelStyle:{ marginLeft: 20},
-        drawerActiveBackgroundColor: '#ff0066',
+        // headerShown: false,
+        drawerActiveBackgroundColor: '#b721ff',
         drawerActiveTintColor: 'white',
-        drawerInactiveTintColor: '#ff0066',
-        drawerItemStyle: {borderRadius: 30},
+        drawerInactiveTintColor: '#b721ff',
+        drawerLabelStyle: {marginLeft: -20, fontSize: 18},
       }}>
       <Drawer.Screen
-        name="BottomTabBar"
+        name="HomeScreen"
         component={BottomTabBar} // You can use BottomTabBar as the home screen
-        options={{
+        options={{ 
           title: 'Smarter',
           drawerActiveTintColor: 'white',
           drawerInactiveTintColor: '#ff0066',
@@ -49,7 +48,6 @@ const DrawerNavigation = () => {
           drawerIcon: ({focused, color, size}) => (
             <Icons name="article" size={size} color={color} />
           ),
-          drawerLabelStyle: {fontSize: 18},
         }}
       />
       <Drawer.Screen
@@ -61,7 +59,6 @@ const DrawerNavigation = () => {
           drawerIcon: ({focused, color, size}) => (
             <Icons name="storefront" size={size} color={color} />
           ),
-          drawerLabelStyle: {fontSize: 18},
         }}
       />
       <Drawer.Screen
@@ -73,7 +70,6 @@ const DrawerNavigation = () => {
           drawerIcon: ({focused, color, size}) => (
             <Icons name="notifications-active" size={size} color={color} />
           ),
-          drawerLabelStyle: {fontSize: 18},
         }}
       />
       <Drawer.Screen
@@ -85,7 +81,6 @@ const DrawerNavigation = () => {
           drawerIcon: ({focused, color, size}) => (
             <Icons name="manage-accounts" size={size} color={color} />
           ),
-          drawerLabelStyle: {fontSize: 18},
         }}
       />
       <Drawer.Screen
@@ -97,7 +92,6 @@ const DrawerNavigation = () => {
           drawerIcon: ({focused, color, size}) => (
             <Icons name="settings" size={size} color={color} />
           ),
-          drawerLabelStyle: {fontSize: 18},
         }}
       />
       <Drawer.Screen
@@ -109,7 +103,6 @@ const DrawerNavigation = () => {
           drawerIcon: ({focused, color, size}) => (
             <Icons name="logout" size={size} color={color} />
           ),
-          drawerLabelStyle: {fontSize: 18},
         }}
       />
     </Drawer.Navigator>

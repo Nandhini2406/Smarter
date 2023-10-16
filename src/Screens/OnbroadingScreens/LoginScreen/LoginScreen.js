@@ -24,7 +24,6 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('');
   const [viewPassword, setViewPassword] = useState(false);
   const [loginError, setLoginError] = useState(null);
-  const name = '';
 
   const loginBtnPressed = async () => {
     try {
@@ -32,11 +31,11 @@ const LoginScreen = () => {
 
       if (result.success) {
         const user = result.user;
-        console.log('Authentication successful');
+        await AsyncStorage.setItem('userName', user.name);
+        console.log(`Authenticated User Name.... ${user.name}`);
+
         Alert.alert('Authentication successful');
         navigation.navigate('BottomTabBar');
-        await AsyncStorage.setItem('userName', user.name);
-        console.log(`savedName.... ${user.name}`);
       } else {
         setLoginError(result.error);
         console.log('Authentication failed:', result.error);

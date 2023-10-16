@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
+import { theme } from '../../Assets/colors/bgTheme';
 export default TaskInputField = props => {
   const [task, setTask] = useState();
 
@@ -39,7 +39,7 @@ export default TaskInputField = props => {
 const styles = StyleSheet.create({
   container: {
     borderColor: '#fff',
-    backgroundColor: '#ff0066',
+    backgroundColor: theme.bgWhite(0.3),
     borderWidth: 1,
     marginHorizontal: '5%',
     borderRadius: 12,

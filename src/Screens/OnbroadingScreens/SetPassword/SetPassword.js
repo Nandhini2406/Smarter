@@ -6,7 +6,9 @@ import CustomButton from '../../../Components/CustomButton/CustomButton';
 import CustomInput from '../../../Components/CustomTextInput/CustomInput';
 import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
 import {styles} from './styles';
-
+import {fetchUserData} from '../../../Services/asyncService/fetchUserData';
+import {saveUserData} from '../../../Services/asyncService/saveUserData';
+import { validatePassword } from '../../../Utils/validation';
 const SetPassword = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
@@ -17,11 +19,11 @@ const SetPassword = () => {
 
   const resetPasswordBtnPressed = async () => {
     try {
-      const userDataKey = `user_${email}`;
-      const userData = await AsyncStorage.getItem(userDataKey);
-
+      const userKey = `user_${email}`;
+      const userData = await AsyncStorage.getItem(userKey);
+      console.log('userdata fetched in ResetPassword...', userData);
       if (!userData) {
-        Alert.alert('Error', 'User not found. Please check your email.');
+        Alert.alert('Failed', 'User not found. Please check your email.');
       } else {
         setResetPassword(true);
       }
@@ -30,34 +32,32 @@ const SetPassword = () => {
     }
   };
 
+  const updateNewPassword = async () => {
+    try {
+      const userData = await fetchUserData();
+     
+      if (userData) {
+        userData.password = newPassword;
+        console.log(`Updated Password for ${userData.email} is ${userData.password}`);
+        await saveUserData(email, userData);
+        navigation.navigate('LoginScreen');
+      }
+    } catch (error) {
+      console.error('Error updating password:', error);
+    }
+  };
+
   const submitBtnPressed = async () => {
     // Password validation criteria
-    const passwordPattern =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-    if (!passwordPattern.test(newPassword)) {
-      setError(
-        'Password must contain at least 8 characters, one lowercase letter, one uppercase letter, one number, and one special character.',
-      );
-      return;
+    if(!validatePassword(newPassword)){
+      setError('Password must contain at least 8 characters, one uppercase letter, one number, and one special character');
+    return;
     }
 
     if (newPassword !== confirmPassword) {
       setError('Passwords do not match.');
     } else {
-      try {
-        // Update the user's password in AsyncStorage
-        const userDataKey = `user_${email}`;
-        const userData = await AsyncStorage.getItem(userDataKey);
-        const user = JSON.parse(userData);
-        user.password = newPassword;
-        await AsyncStorage.setItem(userDataKey, JSON.stringify(user));
-
-        // Navigate to the login screen
-        navigation.navigate('LoginScreen');
-      } catch (error) {
-        console.error('Error updating password:', error);
-      }
+      updateNewPassword();
     }
   };
 
@@ -93,8 +93,8 @@ const SetPassword = () => {
                 value={confirmPassword}
                 //secureTextEntry
               />
-              <CustomButton text="Submit" onPress={submitBtnPressed} />
               {error && <Text style={styles.errorMsg}>{error}</Text>}
+              <CustomButton text="Submit" onPress={submitBtnPressed} />
             </>
           )}
           <CustomButton

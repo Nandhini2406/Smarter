@@ -16,18 +16,21 @@ export const validatePhoneNumber = phoneNo => {
 export const validateEmail = email => {
   const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   if (!emailPattern.test(email)) {
-    return 'Invalid email address.';
+    return 'Invalid email address';
   }
   return null;
 };
 
 export const validatePassword = password => {
-  const passwordPattern = /^.{6,}$/;
-  if (!passwordPattern.test(password)) {
-    return 'Password must be at least 6 characters.';
-  }
-  return null;
+  const passwordPattern =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  return passwordPattern.test(password) 
 };
+
+// if (!passwordPattern.test(newPassword)) {
+// setError('Password must contain at least 8 characters, one lowercase letter, one uppercase letter, one number, and one special character');
+// return;
+// }
 
 export const passwordsMatch = (password, confirmPassword) => {
   return password === confirmPassword;
