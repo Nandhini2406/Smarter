@@ -5,6 +5,7 @@ import {
   Image,
   View,
   Dimensions,
+  TouchableOpacity,
 } from 'react-native';
 import {
   DrawerContentScrollView,
@@ -17,8 +18,10 @@ const {width} = Dimensions.get('screen');
 const CustomDrawer = props => {
   return (
     <DrawerContentScrollView {...props}>
-      <ImageBackground source={images.Settings} style={{height: 140}}>
-        <Image source={IMGS.user} style={styles.userImg} />
+      <ImageBackground source={images.drawerImg} style={{height: 300, marginTop: -10}}>
+      <TouchableOpacity>
+        <Image source={images.appIcon} style={styles.userImg}></Image>
+      </TouchableOpacity>
       </ImageBackground>
       <View style={styles.drawerListWrapper}>
         <DrawerItemList {...props} />
@@ -30,17 +33,19 @@ const CustomDrawer = props => {
 export default CustomDrawer;
 
 const styles = StyleSheet.create({
-//   userImg: {
-//     width: 110,
-//     height: 110,
-//     borderRadius: 110 / 2,
-//     position: 'absolute',
-//     left: width / 2 - 110,
-//     bottom: -110 / 2,
-//     borderWidth: 4,
-//     borderColor: COLORS.white,
-//   },
+  userImg: {
+    width: 120,
+    height: 120,
+    position: 'absolute',
+    left: width / 2 - 130,
+    marginTop: 230,
+    // borderRadius: 45,
+    // borderWidth: 4,
+    // borderColor: 'white',
+    // backgroundColor: 'white'
+  },
   drawerListWrapper: {
-    marginTop: 65,
+    marginTop: 35,
+
   },
 });

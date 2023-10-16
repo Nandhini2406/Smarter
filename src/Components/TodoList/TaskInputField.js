@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { theme } from '../../Assets/colors/bgTheme';
+
 export default TaskInputField = props => {
   const [task, setTask] = useState();
 
@@ -29,7 +30,7 @@ export default TaskInputField = props => {
       />
       <TouchableOpacity onPress={() => handleAddTask(task)}>
         <View style={styles.button}>
-          <MaterialIcons name="keyboard-arrow-up" size={24} color="#ff0066" />
+          <MaterialIcons name="keyboard-arrow-up" size={24} color="skyblue" />
         </View>
       </TouchableOpacity>
     </KeyboardAvoidingView>

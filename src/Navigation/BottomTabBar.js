@@ -15,9 +15,10 @@ const BottomTabBar = () => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarActiveTintColor: 'royalblue',
-        tabBarInactiveTintColor: '#81d4fdwhite',
+        tabBarInactiveTintColor: 'white',
         tabBarActiveBackgroundColor: theme.bgWhite(0.5),
         headerShown: false,
+        tabBarHideOnKeyboard: true,
         tabBarStyle: {
           // backgroundColor: '#81d4fd',
           backgroundColor: 'transparent',
