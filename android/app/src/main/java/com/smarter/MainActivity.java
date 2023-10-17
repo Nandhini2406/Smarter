@@ -14,6 +14,7 @@ import com.facebook.react.defaults.DefaultReactActivityDelegate;
 //import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import org.devio.rn.splashscreen.SplashScreen;
 import com.BV.LinearGradient.LinearGradientPackage;
+import com.reactnativepagerview.PagerViewPackage;
 
 import java.util.Arrays;
 import java.util.List; 
@@ -55,7 +56,9 @@ public class MainActivity extends ReactActivity {
    return Arrays.<ReactPackage>asList(
        new MainReactPackage(),
        //new SplashScreenReactPackage(),
-       new LinearGradientPackage()
+       new LinearGradientPackage(),
+       new PagerViewPackage()
+
    );
  }
 }

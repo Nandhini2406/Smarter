@@ -23,12 +23,12 @@ const DrawerNavigation = () => {
       screenOptions={({route}) => ({
         swipeEdgeWidth: 100 ,
         // drawerStyle: {width: 300},
-        // headerShown: false,
+        headerShown: false,
         drawerActiveBackgroundColor: '#b721ff',
         drawerActiveTintColor: 'white',
         drawerInactiveTintColor: '#b721ff',
-        drawerHideStatusBarOnOpen: true,
-        drawerStatusBarAnimation: 'fade',
+        // drawerHideStatusBarOnOpen: true,
+        // drawerStatusBarAnimation: 'fade',
         drawerLabelStyle: {marginLeft: -20, fontSize: 18},
         drawerIcon: ({focused, color, size}) => {
           let iconName;
