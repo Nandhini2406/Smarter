@@ -22,7 +22,7 @@ const BottomTabBar = () => {
         tabBarStyle: {
           // backgroundColor: '#81d4fd',
           backgroundColor: 'transparent',
-          marginBottom: -10,
+          // marginBottom: -10,
           height: 60,
           position: 'absolute',
           elevation: 0,

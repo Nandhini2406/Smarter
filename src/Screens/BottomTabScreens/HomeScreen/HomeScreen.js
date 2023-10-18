@@ -9,6 +9,7 @@ import GradientBackground from '../../../Components/BackgroundImage/GradientBack
 import CustomButton from '../../../Components/CustomButton/CustomButton';
 import {styles} from './styles';
 import {fetchUserData} from '../../../Services/asyncService/fetchUserData';
+import { SafeAreaView } from 'react-native';
 
 const HomeScreen = ({route}) => {
   const navigation = useNavigation();
@@ -60,13 +61,17 @@ const HomeScreen = ({route}) => {
   const handleProducts = () => {
     navigation.navigate('ProductsScreen');
   };
+  const handleCalculator = () => {
+    navigation.navigate('CalculatorScreen');
+  };
 
   return (
-    <ScrollView>
       <GradientBackground>
+    <ScrollView>
+        <SafeAreaView>
         <View style={styles.root}>
           <Text style={styles.greet}>Hello {userData.name} !</Text>
-          <View style={{flexDirection: 'row', margin: '10%'}}>
+          <View style={{flexDirection: 'row', marginHorizontal: '10%', marginTop: 20}}>
             <TouchableOpacity onPress={handleTodoList}>
               <View style={styles.todo}>
                 <Icon name="checklist" size={50} color="white" />
@@ -80,6 +85,14 @@ const HomeScreen = ({route}) => {
               </View>
             </TouchableOpacity>
           </View>
+          <View style={{flexDirection: 'row', marginBottom: '10%'}}>
+            <TouchableOpacity onPress={handleCalculator}>
+              <View style={styles.todo}>
+                <Icon name="calculate" size={50} color="white" />
+                <Text style={styles.text}>Calculator</Text>
+              </View>
+            </TouchableOpacity>
+            </View>
           <View style={styles.menu}>
             <CustomButton
               text="Test Crash"
@@ -105,8 +118,9 @@ const HomeScreen = ({route}) => {
             />
           </View>
         </View>
-      </GradientBackground>
+        </SafeAreaView>
     </ScrollView>
+      </GradientBackground>
   );
 };
 

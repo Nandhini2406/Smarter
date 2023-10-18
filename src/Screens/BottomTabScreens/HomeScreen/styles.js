@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   },
   todo: {
     backgroundColor: theme.bgWhite(0.3),
-    padding: '3%',
+    padding: '5%',
     borderRadius: 15,
     margin: '10%',
     alignItems: 'center',

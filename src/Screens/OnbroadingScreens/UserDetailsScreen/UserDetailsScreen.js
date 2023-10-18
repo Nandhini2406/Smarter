@@ -145,14 +145,3 @@ const UserDetailsScreen = () => {
 
 export default UserDetailsScreen;
 
-// const retrieveData = async () => {
-//     try {
-//       const value = await AsyncStorage.getItem('email');
-//       if (value !== null) {
-//         // We have data!!
-//         console.log("values...." + value);
-//       }
-//     } catch (error) {
-//       // Error retrieving data
-//     }
-//   };

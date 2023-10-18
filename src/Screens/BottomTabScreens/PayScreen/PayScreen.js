@@ -13,8 +13,6 @@
 
 // export default PayScreen
 
-
-
 //Tired Pager-view
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
@@ -24,8 +22,8 @@ import GradientBackground from '../../../Components/BackgroundImage/GradientBack
 const PayScreen = () => {
   return (
     <GradientBackground>
+      <Text style={[styles.view, {marginTop: 100, marginHorizontal: 80}]}> PAGER VIEW TESTING</Text>
       <PagerView style={styles.pagerView} initialPage={0}>
-        <Text style={[styles.view, {marginVertical: 100}]}> PAGER VIEW TESTING</Text>
         <View key="1" style={styles.view}>
           <Text style={styles.text}>First page</Text>
         </View>
@@ -47,6 +45,7 @@ const styles = StyleSheet.create({
   view: {
     justifyContent: 'center',
     alignItems: 'center',
+    fontSize: 20,
   },
   text: {
     color: 'white',

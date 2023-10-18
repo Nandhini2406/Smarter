@@ -15,8 +15,9 @@ import LoginScreen from '../Screens/OnbroadingScreens/LoginScreen/LoginScreen';
 import SetPassword from '../Screens/OnbroadingScreens/SetPassword/SetPassword';
 import DrawerNavigation from './DrawerNavigation';
 import TodoScreen from '../Screens/BottomTabScreens/TodoScreen/TodoScreen';
-import ProductsScreen from '../Screens/BottomTabScreens/ProductsScreen/ProductsScreen';
-import ProductDetailScreen from '../Screens/BottomTabScreens/ProductDetailScreen/ProductDetailScreen';
+import ProductsScreen from '../Screens/OtherScreens/ProductsScreen/ProductsScreen';
+import ProductDetailScreen from '../Screens/OtherScreens/ProductDetailScreen/ProductDetailScreen';
+import CalculatorScreen from '../Screens/OtherScreens/CalculatorScreen/CalculatorScreen';
 
 import {checkAuthentication} from '../Services/asyncService/Authentication';
 import {
@@ -84,7 +85,7 @@ const Navigator = () => {
   if (loading) {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <ActivityIndicator size="large" color="#ff0066" />
+        <ActivityIndicator size="large" color="skyblue" />
       </View>
     );
   }
@@ -144,6 +145,11 @@ const Navigator = () => {
           name="ProductDetailScreen"
           component={ProductDetailScreen}
           options={{title: 'Product Details'}}
+        />
+        <Stack.Screen
+          name="CalculatorScreen"
+          component={CalculatorScreen}
+          options={{title: 'CalculatorScreen'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
