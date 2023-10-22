@@ -8,6 +8,9 @@
     "crashlytics_javascript_exception_handler_chaining_enabled": false,
 
     "analytics_auto_collection_enabled": false,
-    "google_analytics_automatic_screen_reporting_enabled": false
+    "google_analytics_automatic_screen_reporting_enabled": false,
+
+    "android_task_executor_maximum_pool_size": 10,
+    "android_task_executor_keep_alive_seconds": 3
   }
 }

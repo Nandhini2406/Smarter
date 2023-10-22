@@ -85,6 +85,7 @@ android {
         versionCode 1
         versionName "1.0"
         resValue "string", "app_icon", "mipmap-ic_laucher"
+        multiDexEnabled true
     }
     signingConfigs {
         debug {
@@ -123,6 +124,8 @@ dependencies {
     // Add the dependencies for the Crashlytics and Analytics libraries
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-crashlytics-ndk")
+
+    implementation 'androidx.multidex:multidex:2.0.1'
     //Splash screen
     implementation project(':react-native-splash-screen')
     
