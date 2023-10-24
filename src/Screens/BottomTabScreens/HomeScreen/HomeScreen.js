@@ -77,6 +77,9 @@ const HomeScreen = ({route}) => {
   const handleCalculator = () => {
     navigation.navigate('CalculatorScreen');
   };
+  const handleCalendar = () => {
+    navigation.navigate('CalendarScreen');
+  };
 
 
   return (
@@ -109,6 +112,12 @@ const HomeScreen = ({route}) => {
                 <View style={styles.todo}>
                   <Icon name="calculate" size={50} color="white" />
                   <Text style={styles.text}>Calculator</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={handleCalendar}>
+                <View style={styles.todo}>
+                  <Icon name="calendar-month" size={50} color="white" />
+                  <Text style={styles.text}>Calendar</Text>
                 </View>
               </TouchableOpacity>
             </View>

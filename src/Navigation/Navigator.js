@@ -18,6 +18,7 @@ import TodoScreen from '../Screens/BottomTabScreens/TodoScreen/TodoScreen';
 import ProductsScreen from '../Screens/OtherScreens/ProductsScreen/ProductsScreen';
 import ProductDetailScreen from '../Screens/OtherScreens/ProductDetailScreen/ProductDetailScreen';
 import CalculatorScreen from '../Screens/OtherScreens/CalculatorScreen/CalculatorScreen';
+import CalendarScreen from '../Screens/OtherScreens/CalendarScreen/CalendarScreen';
 
 import {checkAuthentication} from '../Services/asyncService/Authentication';
 import {
@@ -32,7 +33,7 @@ if (!firebase.apps.length) {
 }
 
 const Navigator = () => {
-  
+
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -87,6 +88,7 @@ const Navigator = () => {
           component={ProductDetailScreen}
         />
         <Stack.Screen name="CalculatorScreen" component={CalculatorScreen} />
+        <Stack.Screen name="CalendarScreen" component={CalendarScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
