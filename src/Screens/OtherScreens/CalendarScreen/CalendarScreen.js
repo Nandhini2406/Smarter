@@ -12,13 +12,14 @@ const CalendarScreen = () => {
   return (
     <GradientBackground>
       <View style={styles.container}>
+      <Text style={styles.title}>Calendar</Text>
         <Calendar
           style={styles.calendar}
           enableSwipeMonths
           theme={{
             monthTextColor: 'white',
             textMonthFontWeight: 'bold',
-            textMonthFontSize: 28,
+            textMonthFontSize: 22,
             arrowColor: 'white',
             // arrowStyle:
             calendarBackground: theme.bgWhite(0.3),

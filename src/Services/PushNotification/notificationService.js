@@ -32,7 +32,7 @@ const getFCMToken = async () => {
   }
 };
 
-export const showForegroundNotification = async (data) => {
+export const onDisplayNotification = async (data) => {
   // Request permissions (required for iOS)
   if (Platform.OS == 'ios') {
       await notifee.requestPermission()
@@ -40,16 +40,16 @@ export const showForegroundNotification = async (data) => {
 
   // Create a channel (required for Android)
   const channelId = await notifee.createChannel({
-      id: data?.data?.channel_id,
-      name: data?.data?.channel_name,
+      id: 'default',
+      name: 'Default Channel',
       // sound: data?.data?.sound_name,
       importance: AndroidImportance.HIGH,
   });
 
   // Display a notification
   await notifee.displayNotification({
-      title: data?.notification.title,
-      body: data?.notification.body,
+      title: 'Smarter',
+      body: 'Successfully Logged in',
       android: {
           channelId,
           smallIcon: 'ic_stat', // optional, defaults to 'ic_launcher'.
@@ -80,9 +80,18 @@ export const notificationListner = () => {
       }
     });
 
-   messaging().onMessage(remoteMessage => {
+   messaging().onMessage(async remoteMessage => {
     console.log('A new FCM message arrived!', remoteMessage);
     // You can choose to display the notification here if needed
+    const {title, body} = remoteMessage.notification;
+    try {
+      await notifee.displayNotification({
+        title,
+        body,
+      });
+    } catch (error) {
+      console.error('Error displaying notification:', error);
+    }
   });
 };
 

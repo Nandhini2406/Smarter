@@ -24,6 +24,7 @@ import {
   requestUserPermission,
   notificationListner,
 } from '../Services/PushNotification/notificationService';
+import { onMessageReceived } from '../Firebase/messaging';
 
 const Stack = createStackNavigator();
 
@@ -46,6 +47,7 @@ const Navigator = () => {
   };
 
   useEffect(() => {
+    onMessageReceived();
     requestUserPermission();
     notificationListner();
     checkAuth();

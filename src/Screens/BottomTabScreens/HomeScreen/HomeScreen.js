@@ -14,7 +14,7 @@ import notifee, {AndroidImportance} from '@notifee/react-native';
 import GradientBackground from '../../../Components/ScreenBackground/GradientBackground';
 import CustomButton from '../../../Components/CustomButton/CustomButton';
 import {fetchUserData} from '../../../Services/asyncService/fetchUserData';
-import {showForegroundNotification} from '../../../Services/PushNotification/notificationService';
+import {onDisplayNotification} from '../../../Services/PushNotification/notificationService';
 import {styles} from './styles';
 
 const HomeScreen = ({route}) => {
@@ -64,15 +64,15 @@ const HomeScreen = ({route}) => {
   // //   return test;
   // }
 
-  const onDisplayNotification = async () => {
-    showForegroundNotification({
-      title: 'Foreground Notification',
-      body: 'This is a foreground notification.',
-      data: {
-        // Custom data for your notification, if needed
-      },
-    });
-  };
+  // const onDisplayNotification = async () => {
+  //   showForegroundNotification({
+  //     title: 'Foreground Notification',
+  //     body: 'This is a foreground notification.',
+  //     data: {
+  //       // Custom data for your notification, if needed
+  //     },
+  //   });
+  // };
 
   const handleTodoList = () => {
     navigation.navigate('TodoScreen');
