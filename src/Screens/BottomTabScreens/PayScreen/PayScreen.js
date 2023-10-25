@@ -17,12 +17,15 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import PagerView from 'react-native-pager-view';
-import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
+import GradientBackground from '../../../Components/ScreenBackground/GradientBackground';
 
 const PayScreen = () => {
   return (
     <GradientBackground>
-      <Text style={[styles.view, {marginTop: 100, marginHorizontal: 80}]}> PAGER VIEW TESTING</Text>
+      <Text style={[styles.view, {marginTop: 100, marginHorizontal: 80}]}>
+        {' '}
+        PAGER VIEW TESTING
+      </Text>
       <PagerView style={styles.pagerView} initialPage={0}>
         <View key="1" style={styles.view}>
           <Text style={styles.text}>First page</Text>

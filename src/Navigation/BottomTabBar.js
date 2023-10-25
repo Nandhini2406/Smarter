@@ -6,7 +6,7 @@ import {theme} from '../Assets/colors/bgTheme';
 import HomeScreen from '../Screens/BottomTabScreens/HomeScreen/HomeScreen';
 import PayScreen from '../Screens/BottomTabScreens/PayScreen/PayScreen';
 import ShopScreen from '../Screens/BottomTabScreens/ShopScreen/ShopScreen';
-import ProfileScreen from '../Screens/BottomTabScreens/Profilescreen/ProfileScreen';
+import ProfileScreen from '../Screens/BottomTabScreens/ProfileScreen/ProfileScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -32,7 +32,7 @@ const BottomTabBar = () => {
           padding: 3,
           // borderTopStartRadius: 25,
           // borderTopEndRadius: 25,
-         // backgroundColor: 'white'
+          // backgroundColor: 'white'
         },
         tabBarLabelStyle: {
           fontSize: 14,

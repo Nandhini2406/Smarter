@@ -5,7 +5,7 @@ import CustomInput from '../../../Components/CustomTextInput/CustomInput';
 import CustomButton from '../../../Components/CustomButton/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CheckBox from '@react-native-community/checkbox';
-import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
+import GradientBackground from '../../../Components/ScreenBackground/GradientBackground';
 import {styles} from './styles';
 import {saveUserData} from '../../../Services/asyncService/saveUserData';
 

@@ -46,6 +46,5 @@ const styles = StyleSheet.create({
   },
   drawerListWrapper: {
     marginTop: 35,
-
   },
 });

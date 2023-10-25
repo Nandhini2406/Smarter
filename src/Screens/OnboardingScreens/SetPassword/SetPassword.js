@@ -4,11 +4,11 @@ import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomButton from '../../../Components/CustomButton/CustomButton';
 import CustomInput from '../../../Components/CustomTextInput/CustomInput';
-import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
+import GradientBackground from '../../../Components/ScreenBackground/GradientBackground';
 import {styles} from './styles';
 import {fetchUserData} from '../../../Services/asyncService/fetchUserData';
 import {saveUserData} from '../../../Services/asyncService/saveUserData';
-import { validatePassword } from '../../../Utils/validation';
+import {validatePassword} from '../../../Utils/validation';
 const SetPassword = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
@@ -35,10 +35,12 @@ const SetPassword = () => {
   const updateNewPassword = async () => {
     try {
       const userData = await fetchUserData();
-     
+
       if (userData) {
         userData.password = newPassword;
-        console.log(`Updated Password for ${userData.email} is ${userData.password}`);
+        console.log(
+          `Updated Password for ${userData.email} is ${userData.password}`,
+        );
         await saveUserData(email, userData);
         navigation.navigate('LoginScreen');
       }
@@ -49,9 +51,11 @@ const SetPassword = () => {
 
   const submitBtnPressed = async () => {
     // Password validation criteria
-    if(!validatePassword(newPassword)){
-      setError('Password must contain at least 8 characters, one uppercase letter, one number, and one special character');
-    return;
+    if (!validatePassword(newPassword)) {
+      setError(
+        'Password must contain at least 8 characters, one uppercase letter, one number, and one special character',
+      );
+      return;
     }
 
     if (newPassword !== confirmPassword) {

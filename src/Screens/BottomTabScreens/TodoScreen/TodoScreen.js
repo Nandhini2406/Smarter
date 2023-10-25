@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 import {addTodo, deleteTodo} from '../../../Redux/actions/todoActions'; // action creators
 import {persistor} from '../../../Redux/store/store';
 
-import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
-import TaskInputField from '../../../Components/TodoList/TaskInputField';
-import TaskItem from '../../../Components/TodoList/TaskItem';
+import GradientBackground from '../../../Components/ScreenBackground/GradientBackground';
+import TaskInputField from '../../../Components/TodoComponent/TaskInputField';
+import TaskItem from '../../../Components/TodoComponent/TaskItem';
 import {styles} from './styles';
 
 const TodoScreen = ({todos, addTodo, deleteTodo}) => {

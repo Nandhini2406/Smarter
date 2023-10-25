@@ -10,9 +10,10 @@ export const styles = StyleSheet.create({
     // marginVertical: 100,
   },
   calendar: {
-    backgroundColor: theme.bgWhite(0.3),
-    borderColor: 'black',
+    //backgroundColor: theme.bgWhite(0.3),
+    borderColor: 'white',
     borderWidth: 1,
     borderRadius: 10,
+    marginHorizontal:20,
   },
 });

@@ -1,14 +1,20 @@
-import {View, Text, ScrollView, TouchableOpacity, SafeAreaView} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import analytics from '@react-native-firebase/analytics';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import notifee, { AndroidImportance } from '@notifee/react-native';
+import notifee, {AndroidImportance} from '@notifee/react-native';
 
-import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
+import GradientBackground from '../../../Components/ScreenBackground/GradientBackground';
 import CustomButton from '../../../Components/CustomButton/CustomButton';
 import {fetchUserData} from '../../../Services/asyncService/fetchUserData';
-import { showForegroundNotification } from '../../../Services/PushNotification/notificationService';
+import {showForegroundNotification} from '../../../Services/PushNotification/notificationService';
 import {styles} from './styles';
 
 const HomeScreen = ({route}) => {
@@ -66,7 +72,7 @@ const HomeScreen = ({route}) => {
         // Custom data for your notification, if needed
       },
     });
-  }
+  };
 
   const handleTodoList = () => {
     navigation.navigate('TodoScreen');
@@ -80,7 +86,6 @@ const HomeScreen = ({route}) => {
   const handleCalendar = () => {
     navigation.navigate('CalendarScreen');
   };
-
 
   return (
     <GradientBackground>

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
+import GradientBackground from '../../../Components/ScreenBackground/GradientBackground';
 import {styles} from './styles';
 
 const CalculatorScreen = () => {

@@ -14,8 +14,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-// if(firebase.apps.)÷
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+// firebase.initializeApp(firebaseConfig);
 
 firebase.analytics();
 firebase.crashlytics();

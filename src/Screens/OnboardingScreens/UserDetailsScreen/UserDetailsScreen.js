@@ -4,9 +4,9 @@ import {useNavigation} from '@react-navigation/native';
 import CustomInput from '../../../Components/CustomTextInput/CustomInput';
 import CustomButton from '../../../Components/CustomButton/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
+import GradientBackground from '../../../Components/ScreenBackground/GradientBackground';
 import {styles} from './styles';
-import { fetchUserData } from '../../../Services/asyncService/fetchUserData';
+import {fetchUserData} from '../../../Services/asyncService/fetchUserData';
 
 const UserDetailsScreen = () => {
   const navigation = useNavigation();
@@ -24,14 +24,14 @@ const UserDetailsScreen = () => {
   useEffect(() => {
     const getUserData = async () => {
       const user = await fetchUserData();
-       // console.log(`UserKey ... ${userKey}`);
-        console.log(`User_Name ${user.name}`);
-        console.log(`User_PhoneNumber ${user.phoneNumber}`);
-        console.log(`User_Email ${user.email}`);
+      // console.log(`UserKey ... ${userKey}`);
+      console.log(`User_Name ${user.name}`);
+      console.log(`User_PhoneNumber ${user.phoneNumber}`);
+      console.log(`User_Email ${user.email}`);
 
-        setName(user.name || '');
-        setPhoneNumber(user.phoneNumber || '');
-        setEmail(user.email || '');
+      setName(user.name || '');
+      setPhoneNumber(user.phoneNumber || '');
+      setEmail(user.email || '');
     };
     getUserData();
   }, []);
@@ -144,4 +144,3 @@ const UserDetailsScreen = () => {
 };
 
 export default UserDetailsScreen;
-

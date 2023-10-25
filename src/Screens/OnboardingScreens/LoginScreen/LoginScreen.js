@@ -13,7 +13,7 @@ import CustomInput from '../../../Components/CustomTextInput/CustomInput';
 import CustomButton from '../../../Components/CustomButton/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
+import GradientBackground from '../../../Components/ScreenBackground/GradientBackground';
 import {styles} from './styles';
 
 import {authenticateUser} from '../../../Services/asyncService/Authentication';

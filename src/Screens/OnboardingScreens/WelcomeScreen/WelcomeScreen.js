@@ -3,7 +3,7 @@ import {View, Text, Image, Dimensions} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Carousel from 'react-native-reanimated-carousel';
 import CustomButton from '../../../Components/CustomButton/CustomButton';
-import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
+import GradientBackground from '../../../Components/ScreenBackground/GradientBackground';
 import {styles} from './styles';
 import images from '../../../Assets/Images';
 
@@ -45,7 +45,7 @@ const WelcomeScreen = () => {
   ];
 
   const nextSlide = () => {
-    console.log("Next Button Pressed");
+    console.log('Next Button Pressed');
     console.log(_carousel.current);
     const newIndex = activeIndex + 1;
     if (newIndex < data.length) {
@@ -55,7 +55,7 @@ const WelcomeScreen = () => {
   };
 
   const skipToLastSlide = () => {
-    console.log("skip Button Pressed");
+    console.log('skip Button Pressed');
     // console.log(_carousel.current.next());
     _carousel.current.scrollTo(data.length - 1);
     setActiveIndex(data.length - 1);
@@ -76,7 +76,11 @@ const WelcomeScreen = () => {
             <CustomButton text="Get Started" onPress={SignupButtonPressed} />
             <View style={{flexDirection: 'row', margin: '2%'}}>
               <Text style={styles.text}>Already have a Account?</Text>
-              <CustomButton text="Login" type="Tertiary" onPress={loginButtonPressed}/>
+              <CustomButton
+                text="Login"
+                type="Tertiary"
+                onPress={loginButtonPressed}
+              />
             </View>
           </>
         ) : (
@@ -97,8 +101,8 @@ const WelcomeScreen = () => {
     <GradientBackground>
       <View style={styles.container}>
         <Carousel
-        ref={_carousel}
-        loop={false}
+          ref={_carousel}
+          loop={false}
           data={data}
           renderItem={_renderItem}
           width={width}

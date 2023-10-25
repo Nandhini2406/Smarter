@@ -3,12 +3,11 @@ import React, {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import CustomButton from '../../../Components/CustomButton/CustomButton';
 import crashlytics from '@react-native-firebase/crashlytics';
-import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
+import GradientBackground from '../../../Components/ScreenBackground/GradientBackground';
 import {fetchUserData} from '../../../Services/asyncService/fetchUserData';
 import {styles} from './styles';
 
 const ProfileScreen = () => {
-
   const navigation = useNavigation();
   const [userData, setUserData] = useState({});
 

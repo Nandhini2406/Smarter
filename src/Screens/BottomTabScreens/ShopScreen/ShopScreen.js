@@ -1,19 +1,19 @@
 // import { View, Text } from 'react-native'
 import React from 'react';
-import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
+import GradientBackground from '../../../Components/ScreenBackground/GradientBackground';
 import styled from 'styled-components/native';
 import {Button} from 'react-native-elements';
 import {theme} from '../../../Assets/colors/bgTheme';
 
 const Title = styled.Text`
-  fontSize: 30px;
+  fontsize: 30px;
   color: #000;
-  backgroundColor: #fff;
+  backgroundcolor: #fff;
   padding: 10px;
-  borderRadius: 10px;
-  textAlign: center;
-  marginHorizontal: 40px;
-  marginVertical: 20px;
+  borderradius: 10px;
+  textalign: center;
+  marginhorizontal: 40px;
+  marginvertical: 20px;
 `;
 
 const Container = styled.View`
@@ -34,7 +34,7 @@ const ShopScreen = () => {
             borderColor: 'rgba(0, 0, 0, 1)',
             borderWidth: 2,
           }}
-          titleStyle={{ color: 'rgba(255, 255, 255, 9)' }}
+          titleStyle={{color: 'rgba(255, 255, 255, 9)'}}
           onPress={() => {
             alert('Button from react native elements is clicked!');
           }}

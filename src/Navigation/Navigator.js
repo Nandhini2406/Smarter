@@ -6,13 +6,12 @@ import {View, ActivityIndicator, Text, useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import firebase from '@react-native-firebase/app';
 
-import WelcomeScreen from '../Screens/OnbroadingScreens/WelcomeScreen/WelcomeScreen';
-import SignupScreen from '../Screens/OnbroadingScreens/SignupScreen/SignupScreen';
-import UserDetailsScreen from '../Screens/OnbroadingScreens/UserDetailsScreen/UserDetailsScreen';
-import LoginScreen from '../Screens/OnbroadingScreens/LoginScreen/LoginScreen';
-import SetPassword from '../Screens/OnbroadingScreens/SetPassword/SetPassword';
+import WelcomeScreen from '../Screens/OnboardingScreens/WelcomeScreen/WelcomeScreen';
+import SignupScreen from '../Screens/OnboardingScreens/SignupScreen/SignupScreen';
+import UserDetailsScreen from '../Screens/OnboardingScreens/UserDetailsScreen/UserDetailsScreen';
+import LoginScreen from '../Screens/OnboardingScreens/LoginScreen/LoginScreen';
+import SetPassword from '../Screens/OnboardingScreens/SetPassword/SetPassword';
 import DrawerNavigation from './DrawerNavigation';
 import TodoScreen from '../Screens/BottomTabScreens/TodoScreen/TodoScreen';
 import ProductsScreen from '../Screens/OtherScreens/ProductsScreen/ProductsScreen';
@@ -28,12 +27,7 @@ import {
 
 const Stack = createStackNavigator();
 
-if (!firebase.apps.length) {
-  firebase.initializeApp();
-}
-
 const Navigator = () => {
-
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,

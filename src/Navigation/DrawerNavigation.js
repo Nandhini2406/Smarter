@@ -7,9 +7,9 @@ import Bills from '../Screens/DrawerScreens/Bills';
 import FindAStore from '../Screens/DrawerScreens/FindAStore';
 import Notification from '../Screens/DrawerScreens/Notification';
 import Settings from '../Screens/DrawerScreens/Settings';
+import ProfileScreen from '../Screens/BottomTabScreens/ProfileScreen/ProfileScreen';
+import LoginScreen from '../Screens/OnboardingScreens/LoginScreen/LoginScreen';
 import BottomTabBar from './BottomTabBar';
-import ProfileScreen from '../Screens/BottomTabScreens/Profilescreen/ProfileScreen';
-import LoginScreen from '../Screens/OnbroadingScreens/LoginScreen/LoginScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -21,7 +21,7 @@ const DrawerNavigation = () => {
       article
       receipt-long
       screenOptions={({route}) => ({
-        swipeEdgeWidth: 100 ,
+        swipeEdgeWidth: 100,
         // drawerStyle: {width: 300},
         headerShown: false,
         drawerActiveBackgroundColor: '#b721ff',

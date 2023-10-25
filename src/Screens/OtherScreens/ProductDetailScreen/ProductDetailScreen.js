@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Image, ScrollView} from 'react-native';
-import GradientBackground from '../../../Components/BackgroundImage/GradientBackground';
+import GradientBackground from '../../../Components/ScreenBackground/GradientBackground';
 import {styles} from './styles';
 const ProductDetailScreen = ({route}) => {
   const {item} = route.params;
