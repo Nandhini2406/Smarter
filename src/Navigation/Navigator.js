@@ -6,7 +6,7 @@ import {View, ActivityIndicator, Text, useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-
+import SplashScreen from 'react-native-splash-screen';
 import WelcomeScreen from '../Screens/OnboardingScreens/WelcomeScreen/WelcomeScreen';
 import SignupScreen from '../Screens/OnboardingScreens/SignupScreen/SignupScreen';
 import UserDetailsScreen from '../Screens/OnboardingScreens/UserDetailsScreen/UserDetailsScreen';
@@ -47,9 +47,12 @@ const Navigator = () => {
   };
 
   useEffect(() => {
-    onMessageReceived();
+    // setTimeout(()=> 
+    // SplashScreen.hide());
+    // SplashScreen.show();
     requestUserPermission();
     notificationListner();
+    onMessageReceived();
     checkAuth();
   }, []);
 

@@ -26,7 +26,7 @@ const CalendarScreen = () => {
             dayTextColor: 'white',
             textDayFontSize: 18,
             textInactiveColor: 'white',
-            textSectionTitleColor: 'White',
+            textSectionTitleColor: '#b721ff',
             textDayFontWeight: 'bold',  
             calendarBorderRadius: 10,   
           }}
