@@ -13,6 +13,7 @@ import com.facebook.react.defaults.DefaultReactActivityDelegate;
 //import io.invertase.firebase.crashlytics.ReactNativeFirebaseCrashlyticsNativeHelper;
 //import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import org.devio.rn.splashscreen.SplashScreen;
+// import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativepagerview.PagerViewPackage;
 
@@ -24,7 +25,7 @@ public class MainActivity extends ReactActivity {
 
   @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //SplashScreen.show(this);
+        SplashScreen.show(this);
         super.onCreate(savedInstanceState);
     }
 
@@ -55,7 +56,7 @@ public class MainActivity extends ReactActivity {
  protected List<ReactPackage> getPackages() {
    return Arrays.<ReactPackage>asList(
        new MainReactPackage(),
-       new SplashScreenReactPackage(),
+      //  new SplashScreen(),
        new LinearGradientPackage(),
        new PagerViewPackage()
 
