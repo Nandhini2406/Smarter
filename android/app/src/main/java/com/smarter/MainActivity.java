@@ -12,7 +12,7 @@ import com.facebook.react.defaults.DefaultReactActivityDelegate;
 //import com.facebook.react.modules.core.PermissionListener;
 //import io.invertase.firebase.crashlytics.ReactNativeFirebaseCrashlyticsNativeHelper;
 //import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
-import org.devio.rn.splashscreen.SplashScreen;
+// import org.devio.rn.splashscreen.SplashScreen;
 // import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativepagerview.PagerViewPackage;
@@ -25,8 +25,8 @@ public class MainActivity extends ReactActivity {
 
   @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SplashScreen.show(this);
-        super.onCreate(savedInstanceState);
+        // SplashScreen.show(this);
+        super.onCreate(null);
     }
 
   /**

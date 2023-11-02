@@ -7,7 +7,6 @@ import Bills from '../Screens/DrawerScreens/Bills';
 import FindAStore from '../Screens/DrawerScreens/FindAStore';
 import Notification from '../Screens/DrawerScreens/Notification';
 import Settings from '../Screens/DrawerScreens/Settings';
-import ProfileScreen from '../Screens/BottomTabScreens/ProfileScreen/ProfileScreen';
 import LoginScreen from '../Screens/OnboardingScreens/LoginScreen/LoginScreen';
 import BottomTabBar from './BottomTabBar';
 
@@ -81,13 +80,6 @@ const DrawerNavigation = () => {
         component={Notification}
         options={{
           drawerLabel: 'Notification',
-        }}
-      />
-      <Drawer.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{
-          drawerLabel: 'Profile',
         }}
       />
       <Drawer.Screen

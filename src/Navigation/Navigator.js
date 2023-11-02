@@ -7,6 +7,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import SplashScreen from 'react-native-splash-screen';
+//screens
 import WelcomeScreen from '../Screens/OnboardingScreens/WelcomeScreen/WelcomeScreen';
 import SignupScreen from '../Screens/OnboardingScreens/SignupScreen/SignupScreen';
 import UserDetailsScreen from '../Screens/OnboardingScreens/UserDetailsScreen/UserDetailsScreen';

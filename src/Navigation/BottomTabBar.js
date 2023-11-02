@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {theme} from '../Assets/colors/bgTheme';
@@ -6,7 +6,7 @@ import {theme} from '../Assets/colors/bgTheme';
 import HomeScreen from '../Screens/BottomTabScreens/HomeScreen/HomeScreen';
 import PayScreen from '../Screens/BottomTabScreens/PayScreen/PayScreen';
 import ShopScreen from '../Screens/BottomTabScreens/ShopScreen/ShopScreen';
-import ProfileScreen from '../Screens/BottomTabScreens/ProfileScreen/ProfileScreen';
+import ProfileScreen from '../Screens/BottomTabScreens/Profilescreen/ProfileScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -55,22 +55,22 @@ const BottomTabBar = () => {
       <Tab.Screen
         name="HomeScreen"
         component={HomeScreen}
-        options={{tabBarLabel: 'Home', title: '', headerShown: false}}
+        options={{tabBarLabel: 'Home'}}
       />
       <Tab.Screen
         name="PayScreen"
         component={PayScreen}
-        options={{tabBarLabel: 'Pay', title: 'Pay'}}
+        options={{tabBarLabel: 'Pay'}}
       />
       <Tab.Screen
         name="ShopScreen"
         component={ShopScreen}
-        options={{tabBarLabel: 'Shop', title: '', headerShown: false}}
+        options={{tabBarLabel: 'Shop'}}
       />
       <Tab.Screen
         name="ProfileScreen"
         component={ProfileScreen}
-        options={{tabBarLabel: 'Profile', title: '', headerShown: false}}
+        options={{tabBarLabel: 'Profile'}}
       />
     </Tab.Navigator>
   );

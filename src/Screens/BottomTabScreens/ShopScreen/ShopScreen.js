@@ -6,14 +6,14 @@ import {Button} from 'react-native-elements';
 import {theme} from '../../../Assets/colors/bgTheme';
 
 const Title = styled.Text`
-  fontsize: 30px;
+  font-size: 30px;
   color: #000;
-  backgroundcolor: #fff;
+  background-color: #fff;
   padding: 10px;
-  borderradius: 10px;
-  textalign: center;
-  marginhorizontal: 40px;
-  marginvertical: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-horizontal: 40px;
+  margin-bottom: 20px;
 `;
 
 const Container = styled.View`
