@@ -40,7 +40,7 @@ const BottomTabBar = () => {
         },
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
-          if (route.name === 'HomeScreen') {
+          if (route.name === 'Home') {
             iconName = focused ? 'home' : 'home';
           } else if (route.name === 'PayScreen') {
             iconName = focused ? 'rupee' : 'rupee';
@@ -53,7 +53,7 @@ const BottomTabBar = () => {
         },
       })}>
       <Tab.Screen
-        name="HomeScreen"
+        name="Home"
         component={HomeScreen}
         options={{tabBarLabel: 'Home'}}
       />

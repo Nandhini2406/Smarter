@@ -3,8 +3,8 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import CustomDrawer from '../Components/CustomDrawer/CustomDrawer';
 //Screens in drawer
-import Bills from '../Screens/DrawerScreens/Bills';
-import FindAStore from '../Screens/DrawerScreens/FindAStore';
+import ActivityScreen from '../Screens/DrawerScreens/ActivityScreen';
+import Categories from '../Screens/DrawerScreens/Categories';
 import Notification from '../Screens/DrawerScreens/Notification';
 import Settings from '../Screens/DrawerScreens/Settings';
 import LoginScreen from '../Screens/OnboardingScreens/LoginScreen/LoginScreen';
@@ -31,9 +31,9 @@ const DrawerNavigation = () => {
         drawerLabelStyle: {marginLeft: -20, fontSize: 18},
         drawerIcon: ({focused, color, size}) => {
           let iconName;
-          if (route.name === 'Bills') {
+          if (route.name === 'ActivityScreen') {
             iconName = 'article';
-          } else if (route.name === 'Find Store') {
+          } else if (route.name === 'Categories') {
             iconName = 'storefront';
           } else if (route.name === 'Notification') {
             iconName = 'notifications-active';
@@ -62,17 +62,17 @@ const DrawerNavigation = () => {
         }}
       />
       <Drawer.Screen
-        name="Bills"
-        component={Bills}
+        name="ActivityScreen"
+        component={ActivityScreen}
         options={{
-          drawerLabel: 'Bills',
+          drawerLabel: 'Activity',
         }}
       />
       <Drawer.Screen
-        name="Find Store"
-        component={FindAStore}
+        name="Categories"
+        component={Categories}
         options={{
-          drawerLabel: 'Find Store',
+          drawerLabel: 'Categories',
         }}
       />
       <Drawer.Screen
